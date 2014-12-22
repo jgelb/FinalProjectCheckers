@@ -2,11 +2,18 @@ public class board{
     private char[][] board = new char[9][18];
     
     public board(){
+	int k = 1;
 	for (int i=0;i<board.length;i++){
 	    for (int j=0;j<board[0].length;j++){
 		if (i == 8){
-		    if (j%2 == 1){
-			board[i][j] = 'h';
+		    if (j < 17){
+			if (j%2 == 1){
+			    board[i][j] = (char)(((int)'0')+k);
+			    k++;
+			}
+			else {
+			    board[i][j] = ' ';
+			}
 		    }
 		}
 		else if (j == board[0].length-1){
