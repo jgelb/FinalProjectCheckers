@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class board{
     private char[][] board = new char[9][18];
     public int moveRow = 0;
+    public int moveCol = 0;
     public board(){
 	int k = 1;
 	for (int i=0;i<board.length;i++){
@@ -146,6 +147,39 @@ public class board{
 	else getMoveRow();
 	return moveRow;
     }
+     public int getMoveCol(){
+        
+	System.out.println("");
+        System.out.println ("Now enter a valid number of the row to which you want to move");
+	Scanner scanner= new Scanner(System.in);
+	String Action = scanner.nextLine();
+	if (Action.equals("1")){
+	    moveCol = 1;
+	}
+	else if (Action.equals("2")){
+	    moveCol = 3;
+	}
+	else if (Action.equals("3")){
+	    moveCol = 5;
+	}
+	else if (Action.equals("4")){
+	    moveCol = 7;
+	}
+	else if (Action.equals("5")){
+	    moveCol = 9;
+	}
+	else if (Action.equals("6")){
+	    moveCol = 11;
+	}
+	else if (Action.equals("7")){
+	    moveCol = 13;
+	}
+	else if (Action.equals("8")){
+	    moveCol = 15;
+	}
+	else getMoveCol();
+	return moveCol;
+    }
 	    
 	
 	
@@ -154,5 +188,6 @@ public class board{
 	board x = new board();
 	System.out.println(x);
 	x.getMoveRow();
+	x.getMoveCol();
     }
 }
