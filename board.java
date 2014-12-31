@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class board{
     private char[][] board = new char[9][18];
     public int moveRow = 0;
-<<<<<<< HEAD
     public int moveCol = 0;
-=======
->>>>>>> e7f269e63376b8ea856697b8ed4d07b1b4cb4d1b
+    public int pieceRow = 0;
+    public int pieceCol = 0;
+
     public board(){
 	int k = 1;
 	for (int i=0;i<board.length;i++){
@@ -150,11 +150,11 @@ public class board{
 	else getMoveRow();
 	return moveRow;
     }
-<<<<<<< HEAD
+
      public int getMoveCol(){
         
 	System.out.println("");
-        System.out.println ("Now enter a valid number of the row to which you want to move");
+        System.out.println ("Now enter a valid number of the column to which you want to move");
 	Scanner scanner= new Scanner(System.in);
 	String Action = scanner.nextLine();
 	if (Action.equals("1")){
@@ -184,19 +184,85 @@ public class board{
 	else getMoveCol();
 	return moveCol;
     }
-=======
->>>>>>> e7f269e63376b8ea856697b8ed4d07b1b4cb4d1b
-	    
-	
+
+    public int choosePieceRow(){
+        
+	System.out.println("");
+        System.out.println ("Enter a valid letter of the row of the piece you want to move");
+	Scanner scanner= new Scanner(System.in);
+	String Action = scanner.nextLine();
+	if (Action.equals("H")){
+	    pieceRow = 0;
+	}
+	else if (Action.equals("G")){
+	    pieceRow = 1;
+	}
+	else if (Action.equals("F")){
+	    pieceRow = 2;
+	}
+	else if (Action.equals("E")){
+	    pieceRow = 3;
+	}
+	else if (Action.equals("D")){
+	    pieceRow = 4;
+	}
+	else if (Action.equals("C")){
+	    pieceRow = 5;
+	}
+	else if (Action.equals("B")){
+	    pieceRow = 6;
+	}
+	else if (Action.equals("A")){
+	    pieceRow = 7;
+	}
+	else choosePieceRow();
+	return pieceRow;
+    }
+
+     public int choosePieceCol(){
+        
+	System.out.println("");
+        System.out.println ("Enter the column of the piece you want to move");
+	Scanner scanner= new Scanner(System.in);
+	String Action = scanner.nextLine();
+	if (Action.equals("1")){
+	    pieceCol = 1;
+	}
+	else if (Action.equals("2")){
+	    pieceCol = 3;
+	}
+	else if (Action.equals("3")){
+	    pieceCol = 5;
+	}
+	else if (Action.equals("4")){
+	    pieceCol = 7;
+	}
+	else if (Action.equals("5")){
+	    pieceCol = 9;
+	}
+	else if (Action.equals("6")){
+	    pieceCol = 11;
+	}
+	else if (Action.equals("7")){
+	    pieceCol = 13;
+	}
+	else if (Action.equals("8")){
+	    pieceCol = 15;
+	}
+	else choosePieceCol();
+	return pieceCol;
+    }
+
+   
 	
         
     public static void main(String[] args){
 	board x = new board();
 	System.out.println(x);
 	x.getMoveRow();
-<<<<<<< HEAD
 	x.getMoveCol();
-=======
->>>>>>> e7f269e63376b8ea856697b8ed4d07b1b4cb4d1b
+	x.choosePieceRow();
+	x.choosePieceCol();
+
     }
 }
