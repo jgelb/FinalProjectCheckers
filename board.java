@@ -5,7 +5,10 @@ import java.util.Scanner;
 public class board{
     private char[][] board = new char[9][18];
     public int moveRow = 0;
+<<<<<<< HEAD
     public int moveCol = 0;
+=======
+>>>>>>> e7f269e63376b8ea856697b8ed4d07b1b4cb4d1b
     public board(){
 	int k = 1;
 	for (int i=0;i<board.length;i++){
@@ -147,6 +150,7 @@ public class board{
 	else getMoveRow();
 	return moveRow;
     }
+<<<<<<< HEAD
      public int getMoveCol(){
         
 	System.out.println("");
@@ -180,6 +184,8 @@ public class board{
 	else getMoveCol();
 	return moveCol;
     }
+=======
+>>>>>>> e7f269e63376b8ea856697b8ed4d07b1b4cb4d1b
 	    
 	
 	
@@ -188,6 +194,9 @@ public class board{
 	board x = new board();
 	System.out.println(x);
 	x.getMoveRow();
+<<<<<<< HEAD
 	x.getMoveCol();
+=======
+>>>>>>> e7f269e63376b8ea856697b8ed4d07b1b4cb4d1b
     }
 }
