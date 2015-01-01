@@ -8,6 +8,7 @@ public class board{
     public int moveCol = 0;
     public int pieceRow = 0;
     public int pieceCol = 0;
+    public boolean gameOver = false;
 
     public board(){
 	int k = 1;
@@ -337,12 +338,19 @@ public class board{
     public static void main(String[] args){
 	board x = new board();
 	System.out.println(x);
+	//while (gameOver = false){
 	x.getMoveRow();
 	x.getMoveCol();
 	x.choosePieceRow();
 	x.choosePieceCol();
 	x.doMove();
 	System.out.println(x.toString());
-
+	// x.Computermove;
+	System.out.println(x.toString());
+	
+	//}
+	//if (gameOver = true){
+	//System.out.println("Congratulations");}
+	
     }
 }
