@@ -271,7 +271,7 @@ public class board{
 	    else {
 		board[moveRow][moveCol] = 'o';
 		board[pieceRow][pieceCol] = ' ';
-		System.out.println("it works");
+	        
 	    }
 		
       	}
@@ -289,7 +289,7 @@ public class board{
 	    else {
 		board[moveRow][moveCol] = 'o';
 		board[pieceRow][pieceCol] = ' ';
-		System.out.println("it works");
+	        
 	    }
 		
       	}
