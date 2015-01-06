@@ -119,140 +119,134 @@ public class board{
     }
 
     //Here will be the code that takes the user move input, and converts it to a spot in the array (for example, H8 is board[0][15])
-    public int getMoveRow(){
-	System.out.println ("First enter a valid letter of the row to which you want to move");
+    public void chooseMoveSpace(){
+	System.out.println ("WHERE DO YOU WANT TO MOVE? (i.e. D5)");
 	Scanner scanner= new Scanner(System.in);
-	char Action = scanner.next().charAt(0);
-	if (Action=='H'){
+	String Action = scanner.nextLine();
+	if (Action.substring(0,1).equals("H")){
 	    moveRow = 0;
 	}
-	else if (Action=='G'){
+	else if (Action.substring(0,1).equals("G")){
 	    moveRow = 1;
 	}
-	else if (Action=='F'){
+	else if (Action.substring(0,1).equals("F")){
 	    moveRow = 2;
 	}
-	else if (Action=='E'){
+	else if (Action.substring(0,1).equals("E")){
 	    moveRow = 3;
 	}
-	else if (Action=='D'){
+	else if (Action.substring(0,1).equals("D")){
 	    moveRow = 4;
 	}
-	else if (Action=='C'){
+	else if (Action.substring(0,1).equals("C")){
 	    moveRow = 5;
 	}
-	else if (Action=='B'){
+	else if (Action.substring(0,1).equals("B")){
 	    moveRow = 6;
 	}
-	else if (Action=='A'){
+	else if (Action.substring(0,1).equals("A")){
 	    moveRow = 7;
 	}
-	else getMoveRow();
-	return moveRow;
-    }
-
-     public int getMoveCol(){
-        
-	System.out.println("");
-        System.out.println ("Now enter a valid number of the column to which you want to move");
-	Scanner scanner= new Scanner(System.in);
-	String Action = scanner.nextLine();
-	if (Action.equals("1")){
+	else {
+	    System.out.println("Error");
+	    choosePieceSpace();
+	}
+	if (Action.substring(1).equals("1")){
 	    moveCol = 1;
 	}
-	else if (Action.equals("2")){
+	else if (Action.substring(1).equals("2")){
 	    moveCol = 3;
 	}
-	else if (Action.equals("3")){
+	else if (Action.substring(1).equals("3")){
 	    moveCol = 5;
 	}
-	else if (Action.equals("4")){
+	else if (Action.substring(1).equals("4")){
 	    moveCol = 7;
 	}
-	else if (Action.equals("5")){
+	else if (Action.substring(1).equals("5")){
 	    moveCol = 9;
 	}
-	else if (Action.equals("6")){
+	else if (Action.substring(1).equals("6")){
 	    moveCol = 11;
 	}
-	else if (Action.equals("7")){
+	else if (Action.substring(1).equals("7")){
 	    moveCol = 13;
 	}
-	else if (Action.equals("8")){
+	else if (Action.substring(1).equals("8")){
 	    moveCol = 15;
 	}
-	else getMoveCol();
-	return moveCol;
+	else {
+	    System.out.println("Error");
+	    choosePieceSpace();
+	}
     }
 
-    public int choosePieceRow(){
-        
-	System.out.println("");
-        System.out.println ("Enter a valid letter of the row of the piece you want to move");
-	Scanner scanner= new Scanner(System.in);
-	char Action = scanner.next().charAt(0);
-	if (Action=='H'){
-	    pieceRow = 0;
-	}
-	else if (Action=='G'){
-	    pieceRow = 1;
-	}
-	else if (Action=='F'){
-	    pieceRow = 2;
-	}
-	else if (Action=='E'){
-	    pieceRow = 3;
-	}
-	else if (Action=='D'){
-	    pieceRow = 4;
-	}
-	else if (Action=='C'){
-	    pieceRow = 5;
-	}
-	else if (Action=='B'){
-	    pieceRow = 6;
-	}
-	else if (Action=='A'){
-	    pieceRow = 7;
-	}
-	else choosePieceRow();
-	return pieceRow;
-    }
 
-     public int choosePieceCol(){
+    public void choosePieceSpace(){
         
 	System.out.println("");
-        System.out.println ("Enter the column of the piece you want to move");
+        System.out.println ("WHICH PIECE DO YOU WANT TO MOVE? (i.e. D5)");
 	Scanner scanner= new Scanner(System.in);
 	String Action = scanner.nextLine();
-	if (Action.equals("1")){
+	if (Action.substring(0,1).equals("H")){
+	    pieceRow = 0;
+	}
+	else if (Action.substring(0,1).equals("G")){
+	    pieceRow = 1;
+	}
+	else if (Action.substring(0,1).equals("F")){
+	    pieceRow = 2;
+	}
+	else if (Action.substring(0,1).equals("E")){
+	    pieceRow = 3;
+	}
+	else if (Action.substring(0,1).equals("D")){
+	    pieceRow = 4;
+	}
+	else if (Action.substring(0,1).equals("C")){
+	    pieceRow = 5;
+	}
+	else if (Action.substring(0,1).equals("B")){
+	    pieceRow = 6;
+	}
+	else if (Action.substring(0,1).equals("A")){
+	    pieceRow = 7;
+	}
+	else {
+	    System.out.println("Error");
+	    choosePieceSpace();
+	}
+	if (Action.substring(1).equals("1")){
 	    pieceCol = 1;
 	}
-	else if (Action.equals("2")){
+	else if (Action.substring(1).equals("2")){
 	    pieceCol = 3;
 	}
-	else if (Action.equals("3")){
+	else if (Action.substring(1).equals("3")){
 	    pieceCol = 5;
 	}
-	else if (Action.equals("4")){
+	else if (Action.substring(1).equals("4")){
 	    pieceCol = 7;
 	}
-	else if (Action.equals("5")){
+	else if (Action.substring(1).equals("5")){
 	    pieceCol = 9;
 	}
-	else if (Action.equals("6")){
+	else if (Action.substring(1).equals("6")){
 	    pieceCol = 11;
 	}
-	else if (Action.equals("7")){
+	else if (Action.substring(1).equals("7")){
 	    pieceCol = 13;
 	}
-	else if (Action.equals("8")){
+	else if (Action.substring(1).equals("8")){
 	    pieceCol = 15;
 	}
-	else choosePieceCol();
-	return pieceCol;
+	else {
+	    System.out.println("Error");
+	    choosePieceSpace();
+	}
     }
 
+   
     public void doMove(){
 	//Here will be code for all of the possible move options
 
@@ -260,13 +254,11 @@ public class board{
 	if (moveRow == pieceRow - 1 && moveCol == pieceCol + 2){
 	    if ( board[moveRow][moveCol]=='x'){
 		    System.out.println ("Illegal move");
-		    getMoveRow();
-		    getMoveCol();
+		    choosePieceSpace();
 	    	}
 	    else if ( board[moveRow][moveCol]=='o'){
 		    System.out.println ("Illegal move");
-		    getMoveRow();
-		    getMoveCol();
+		    choosePieceSpace();
 	    	}
 	    else {
 		board[moveRow][moveCol] = 'o';
@@ -278,13 +270,11 @@ public class board{
 	else if (moveRow == pieceRow - 1 && moveCol == pieceCol - 2){
 	    if ( board[moveRow][moveCol]=='x'){
 		    System.out.println ("Illegal move");
-		    getMoveRow();
-		    getMoveCol();
+		    choosePieceSpace();
 	    	}
 	    else if ( board[moveRow][moveCol]=='o'){
 		    System.out.println ("Illegal move");
-		    getMoveRow();
-		    getMoveCol();
+		    choosePieceSpace();
 	    	}
 	    else {
 		board[moveRow][moveCol] = 'o';
@@ -298,13 +288,11 @@ public class board{
 	if (moveRow == pieceRow - 2 && moveCol == pieceCol + 4){
 	    if ( board[moveRow][moveCol]=='x'){
 		    System.out.println ("Illegal move");
-		    getMoveRow();
-		    getMoveCol();
+		    choosePieceSpace();
 	    	}
 	    else if ( board[moveRow][moveCol]=='o'){
 		    System.out.println ("Illegal move");
-		    getMoveRow();
-		    getMoveCol();
+		    choosePieceSpace();
 	    	}
 	    else if  (( board[moveRow][moveCol]==' ') && (board[moveRow + 1][moveCol - 2]=='x')){
 		board[moveRow][moveCol] = 'o';
@@ -316,13 +304,11 @@ public class board{
 	if (moveRow == pieceRow - 2 && moveCol == pieceCol - 4){
 	    if ( board[moveRow][moveCol]=='x'){
 		    System.out.println ("Illegal move");
-		    getMoveRow();
-		    getMoveCol();
+		    choosePieceSpace();
 	    	}
 	    else if ( board[moveRow][moveCol]=='o'){
 		    System.out.println ("Illegal move");
-		    getMoveRow();
-		    getMoveCol();
+		    choosePieceSpace();
 	    	}
 	    else if  (( board[moveRow][moveCol]==' ') && (board[moveRow + 1][moveCol + 2]=='x')){
 		board[moveRow][moveCol] = 'o';
@@ -332,20 +318,32 @@ public class board{
 		
       	}
     }
-	
+
+    public void Gameover(){
+	int counter = 0;
+	for (int i=0;i<board.length;i++){
+	    for (int j=0;j<board[0].length;j++){
+		if (board[i][j]=='x'){
+		    counter++;
+		}
+	    }
+	}
+	if (counter<1){
+	    gameOver=true;
+	}
+    }
     
     public static void main(String[] args){
 	board x = new board();
 	System.out.println(x);
-	//while (gameOver = false){
-	x.choosePieceRow();
-	x.choosePieceCol();
-	x.getMoveRow();
-	x.getMoveCol();
-	x.doMove();
-	System.out.println(x);
+	while (x.gameOver == false){
+	    x.choosePieceSpace();
+	    x.chooseMoveSpace();
+	    x.doMove();
+	    System.out.println(x);
+	}
 	// x.Computermove;
-	System.out.println(x);
+	//System.out.println(x);
 	
 	//}
 	//if (gameOver = true){
