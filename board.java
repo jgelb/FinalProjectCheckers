@@ -318,7 +318,31 @@ public class board{
 		
       	}
     }
-
+    //Computer move functions-------------------------------------------------------------------------------------
+    public void blockMove(){
+	for (int i=0;i<board.length;i++){
+	    for (int j=0;j<board[0].length;j++){
+		if (board[i][j] == 'x') {
+		    if (board[i + 1][j + 2] == 'o') {
+				if board[i - 1][j - 2] == ' '{
+					if board[i -2][j - 4] 
+				    }
+			    }
+		    }
+	    }
+	}
+    }
+    public void computerMove(){
+	//checkBlockMove
+	
+	//dangerCheck + Escape
+	//Attack
+	//moveEdge
+	//randomMove
+	
+    }
+    
+    
     public void Gameover(){
 	int counter = 0;
 	for (int i=0;i<board.length;i++){
@@ -340,6 +364,7 @@ public class board{
 	    x.choosePieceSpace();
 	    x.chooseMoveSpace();
 	    x.doMove();
+	    x.Gameover();
 	    System.out.println(x);
 	}
 	// x.Computermove;
