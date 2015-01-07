@@ -321,8 +321,8 @@ public class board{
 
     //Computer move functions-------------------------------------------------------------------------------------
    public void blockMove(){
-	for (int i=0;i<board.length;i++){
-	    for (int j=0;j<board[0].length;j++){
+	for (int i=1;i<board.length-2;i++){
+	    for (int j=3;j<board[0].length-4;j++){
 		if (board[i][j] == 'x') {
 		    if (board[i + 1][j + 2] == 'o') {
 			if (board[i - 1][j - 2] == ' '){
@@ -352,8 +352,102 @@ public class board{
 		}
 	    }
 	}
+   }
+
+    public void escape(){
+	for (int i=1;i<board.length-2;i++){
+	    for (int j=3;j<board[0].length-4;j++){
+		if (board[i][j] == 'x') {
+		    if (board[i + 1][j + 2] == 'o') {
+			if (board[i - 1][j - 2] == ' '){ //IN DANGER
+			    if (board[i+1][j-2] == ' '){
+				board[i][j] = ' ';
+				board[i+1][j-2] = 'x';
+			    }
+			}
+		
+		    }
+		    else if (board[i + 1][j - 2] == 'o'){
+			if (board[i - 1][j + 2] == ' '){ //IN DANGER
+			    if (board[i+1][j+2] == ' '){
+				board[i][j] = ' ';
+				board[i+1][j+2] = 'x';
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    
+    public void attack(){
+	for (int i=0;i<board.length;i++){
+	    for (int j=0;j<board[0].length;j++){
+		if (j == 1){
+		    if (board[i][j] == 'x'){
+			if (board[i+1][j+2] == 'o'){
+			    if (board[i+2][j+4] == ' '){
+				board[i][j] = ' ';
+				board[i+1][j+2] = ' ';
+				board[i+2][j+4] = 'x';
+			    }
+			}
+		    }
+		}
+		else if (j == 15){
+		    if (board[i][j] == 'x'){
+			if (board[i+1][j-2] == 'o'){
+			    if (board[i+2][j-4] == ' '){
+				board[i][j] = ' ';
+				board[i+1][j-2] = ' ';
+				board[i+2][j-4] = 'x';
+			    }
+			}
+		    }
+		}
+		else {
+		    if (board[i][j] == 'x'){
+			if (board[i+1][j+2] == 'o'){
+			    if (board[i+2][j+4] == ' '){
+				board[i][j] = ' ';
+				board[i+1][j+2] = ' ';
+				board[i+2][j+4] = 'x';
+			    }
+			}
+			else if (board[i+1][j-2] == 'o'){
+			    if (board[i+2][j-4] == ' '){
+				board[i][j] = ' ';
+				board[i+1][j-2] = ' ';
+				board[i+2][j-4] = 'x';
+			    }
+			}
+		    }
+		}
+	    }
+	}
     }
 
+    public void moveEdge(){
+	for (int i=0;i<board.length;i++){
+	    if (board[i][3] == 'x'){
+		if (board[i+1][1] == ' '){
+		    board[i][3] = ' ';
+		    board[i+1][1] = 'x';
+		}
+	    }
+	    else if (board[i][13] == 'x'){
+		if (board[i][15] == ' '){
+		    board[i][13] = ' ';
+		    board[i+1][15] = 'x';
+		}
+	    }
+	}
+    }
+
+    public void randomMove(){
+	
+    }
+    
     public void computerMove(){
 	//checkBlockMove
 	
