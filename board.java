@@ -320,49 +320,62 @@ public class board{
     }
 
     //Computer move functions-------------------------------------------------------------------------------------
-   public void blockMove(){
-	for (int i=1;i<board.length-2;i++){
-	    for (int j=3;j<board[0].length-4;j++){
-		if (board[i][j] == 'x') {
-		    if (board[i + 1][j + 2] == 'o') {
-			if (board[i - 1][j - 2] == ' '){
-			    if (board[i -2][j - 4] == 'x'){
-				board[i-2][j-4] = ' ';
-				board [i -1][j - 2] = 'x';
-			    }
-			    else if (board[i -2][j] == 'x'){
-				board[i-2][j] = ' ';
-				board [i -1][j -2] = 'x';
-			    }
-			}
+   public boolean blockMove(){
+       boolean blocked = false;
+       for (int i=1;i<board.length-2;i++){
+	   for (int j=3;j<board[0].length-4;j++){
+	       if (board[i][j] == 'x') {
+		   if (board[i + 1][j + 2] == 'o') {
+		       if (board[i - 1][j - 2] == ' '){
+			   if (board[i -2][j - 4] == 'x'){
+			       blocked = true;
+			       board[i-2][j-4] = ' ';
+			       board [i -1][j - 2] = 'x';
+			       return true;
+			   }
+			   else if (board[i -2][j] == 'x'){
+			       blocked = true;
+			       board[i-2][j] = ' ';
+			       board [i -1][j -2] = 'x';
+			       return true;
+			   }
+		       }
 		
-		    }
-		    else if (board[i + 1][j - 2] == 'o'){
-			if (board[i - 1][j + 2] == ' '){
-			    if (board[i -2][j + 4] == 'x'){
-				board[i-2][j+4] = ' ';
-				board [i -1][j + 2] = 'x';
-			    }
-			    else if (board[i -2][j] == 'x'){
-				board[i-2][j] = ' ';
-				board [i -1][j + 2] = 'x';
-			    }
-			}
-		    }
-		}
-	    }
-	}
+		   }
+		   else if (board[i + 1][j - 2] == 'o'){
+		       if (board[i - 1][j + 2] == ' '){
+			   if (board[i -2][j + 4] == 'x'){
+			       blocked = true;
+			       board[i-2][j+4] = ' ';
+			       board [i -1][j + 2] = 'x';
+			       return true;
+			   }
+			   else if (board[i -2][j] == 'x'){
+			       blocked = true;
+			       board[i-2][j] = ' ';
+			       board [i -1][j + 2] = 'x';
+			       return true;
+			   }
+		       }
+		   }
+	       }
+	   }
+       }
+       return false;
    }
 
-    public void escape(){
+    public boolean escape(){
+	boolean escaped = false;
 	for (int i=1;i<board.length-2;i++){
 	    for (int j=3;j<board[0].length-4;j++){
 		if (board[i][j] == 'x') {
 		    if (board[i + 1][j + 2] == 'o') {
 			if (board[i - 1][j - 2] == ' '){ //IN DANGER
 			    if (board[i+1][j-2] == ' '){
+				escaped = true;
 				board[i][j] = ' ';
 				board[i+1][j-2] = 'x';
+				return true;
 			    }
 			}
 		
@@ -370,26 +383,32 @@ public class board{
 		    else if (board[i + 1][j - 2] == 'o'){
 			if (board[i - 1][j + 2] == ' '){ //IN DANGER
 			    if (board[i+1][j+2] == ' '){
+				escaped = true;
 				board[i][j] = ' ';
 				board[i+1][j+2] = 'x';
+				return true;
 			    }
 			}
 		    }
 		}
 	    }
 	}
+	return false;
     }
     
-    public void attack(){
+    public boolean attack(){
+	boolean attacked = false;
 	for (int i=0;i<board.length;i++){
 	    for (int j=0;j<board[0].length;j++){
 		if (j == 1){
 		    if (board[i][j] == 'x'){
 			if (board[i+1][j+2] == 'o'){
 			    if (board[i+2][j+4] == ' '){
+				attacked = true;
 				board[i][j] = ' ';
 				board[i+1][j+2] = ' ';
 				board[i+2][j+4] = 'x';
+				return true;
 			    }
 			}
 		    }
@@ -398,9 +417,11 @@ public class board{
 		    if (board[i][j] == 'x'){
 			if (board[i+1][j-2] == 'o'){
 			    if (board[i+2][j-4] == ' '){
+				attacked = true;
 				board[i][j] = ' ';
 				board[i+1][j-2] = ' ';
 				board[i+2][j-4] = 'x';
+				return true;
 			    }
 			}
 		    }
@@ -409,53 +430,123 @@ public class board{
 		    if (board[i][j] == 'x'){
 			if (board[i+1][j+2] == 'o'){
 			    if (board[i+2][j+4] == ' '){
+				attacked = true;
 				board[i][j] = ' ';
 				board[i+1][j+2] = ' ';
 				board[i+2][j+4] = 'x';
+				return true;
 			    }
 			}
 			else if (board[i+1][j-2] == 'o'){
 			    if (board[i+2][j-4] == ' '){
+				attacked = true;
 				board[i][j] = ' ';
 				board[i+1][j-2] = ' ';
 				board[i+2][j-4] = 'x';
+				return true;
 			    }
 			}
 		    }
 		}
 	    }
 	}
+	return false;
     }
 
-    public void moveEdge(){
+    public boolean moveEdge(){
+	boolean moved = false;
 	for (int i=0;i<board.length;i++){
 	    if (board[i][3] == 'x'){
 		if (board[i+1][1] == ' '){
+		    moved = true;
 		    board[i][3] = ' ';
 		    board[i+1][1] = 'x';
+		    return true;
 		}
 	    }
 	    else if (board[i][13] == 'x'){
-		if (board[i][15] == ' '){
+		if (board[i+1][15] == ' '){
+		    moved = true;
 		    board[i][13] = ' ';
 		    board[i+1][15] = 'x';
+		    return true;
 		}
 	    }
 	}
+	return false;
     }
 
     public void randomMove(){
-	
+	Random r = new Random();
+	boolean moved = false;
+	for (int i=0;i<board.length;i++){
+	    for (int j=0;j<board[0].length;j++){
+		if (board[i][j] == 'x'){
+		    if (j == 1){
+			if (board[i+1][j+2] == ' '){
+			    if (r.nextInt(2) == 0){
+				moved = true;
+				board[i][j] = ' ';
+				board[i+1][j+2] = 'x';
+				return;
+			    }
+			}
+		    }
+		    else if (j == 15){
+			if (board[i+1][j-2] == ' '){
+			    if (r.nextInt(2) == 0){
+				moved = true;
+				board[i][j] = ' ';
+				board[i+1][j-2] = 'x';
+				return;
+			    }
+			}
+		    }
+		    else{
+	        	if (board[i+1][j+2] == ' '){
+			    if (r.nextInt(2) == 0){
+				moved = true;
+				board[i][j] = ' ';
+				board[i+1][j+2] = 'x';
+				return;
+			    }
+			}
+			else if (board[i+1][j-2] == ' '){
+			    if (r.nextInt(2) == 0){
+				moved = true;
+				board[i][j] = ' ';
+				board[i+1][j-2] = 'x';
+				return;
+			    }
+			}
+		    }
+		}
+	    }
+	}
+	if (moved == false){
+	    randomMove(); 
+	}
     }
     
     public void computerMove(){
+	boolean move = blockMove();
+	if (move == false){
+	    move = escape();
+	    if (move == false){
+		move = attack();
+		if (move == false){
+		    move = moveEdge();
+		    if (move == false){
+			randomMove();
+		    }
+		}
+	    }
+	}
 	//checkBlockMove
-	
-	//dangerCheck + Escape
+ 	//dangerCheck + Escape
 	//Attack
 	//moveEdge
 	//randomMove
-	
     }
     
     
@@ -480,6 +571,9 @@ public class board{
 	    x.choosePieceSpace();
 	    x.chooseMoveSpace();
 	    x.doMove();
+	    x.Gameover();
+	    System.out.println(x);
+	    x.computerMove();
 	    x.Gameover();
 	    System.out.println(x);
 	}
