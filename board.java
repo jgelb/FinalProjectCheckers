@@ -297,7 +297,7 @@ public class board{
 	    else if  (( board[moveRow][moveCol]==' ') && (board[moveRow + 1][moveCol - 2]=='x')){
 		board[moveRow][moveCol] = 'o';
 		board[pieceRow][pieceCol] = ' ';
-		board[moveRow - 1][moveCol - 2] = ' ';
+		board[moveRow + 1][moveCol - 2] = ' ';
 	    }
 		
       	}
@@ -313,7 +313,7 @@ public class board{
 	    else if  (( board[moveRow][moveCol]==' ') && (board[moveRow + 1][moveCol + 2]=='x')){
 		board[moveRow][moveCol] = 'o';
 		board[pieceRow][pieceCol] = ' ';
-		board[moveRow - 1][moveCol + 2] = ' ';
+		board[moveRow + 1][moveCol + 2] = ' ';
 	    }
 		
       	}
