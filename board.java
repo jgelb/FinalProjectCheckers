@@ -261,9 +261,13 @@ public class board{
 		    choosePieceSpace();
 	    	}
 	    else {
-		board[moveRow][moveCol] = 'o';
+		if (moveRow == 0){
+		    board[moveRow][moveCol] = 'K';
+		}
+		else {
+		    board[moveRow][moveCol] = 'o';
+		}
 		board[pieceRow][pieceCol] = ' ';
-	        
 	    }
 		
       	}
@@ -277,9 +281,13 @@ public class board{
 		    choosePieceSpace();
 	    	}
 	    else {
-		board[moveRow][moveCol] = 'o';
+		if (moveRow == 0){
+		    board[moveRow][moveCol] = 'K';
+		}
+		else {
+		    board[moveRow][moveCol] = 'o';
+		}
 		board[pieceRow][pieceCol] = ' ';
-	        
 	    }
 		
       	}
@@ -295,7 +303,12 @@ public class board{
 		    choosePieceSpace();
 	    	}
 	    else if  (( board[moveRow][moveCol]==' ') && (board[moveRow + 1][moveCol - 2]=='x')){
-		board[moveRow][moveCol] = 'o';
+		if (moveRow == 0){
+		    board[moveRow][moveCol] = 'K';
+		}
+		else {
+		    board[moveRow][moveCol] = 'o';
+		}
 		board[pieceRow][pieceCol] = ' ';
 		board[moveRow + 1][moveCol - 2] = ' ';
 	    }
@@ -311,9 +324,14 @@ public class board{
 		    choosePieceSpace();
 	    	}
 	    else if  (( board[moveRow][moveCol]==' ') && (board[moveRow + 1][moveCol + 2]=='x')){
-		board[moveRow][moveCol] = 'o';
+	        if (moveRow == 0){
+		    board[moveRow][moveCol] = 'K';
+		}
+		else {
+		    board[moveRow][moveCol] = 'o';
+		}
 		board[pieceRow][pieceCol] = ' ';
-		board[moveRow + 1][moveCol + 2] = ' ';
+		board[moveRow + 1][moveCol - 2] = ' ';
 	    }
 		
       	}
@@ -322,7 +340,7 @@ public class board{
     //Computer move functions-------------------------------------------------------------------------------------
    public boolean blockMove(){
        boolean blocked = false;
-       for (int i=1;i<board.length-2;i++){
+       for (int i=2;i<board.length-2;i++){
 	   for (int j=3;j<board[0].length-4;j++){
 	       if (board[i][j] == 'x') {
 		   if (board[i + 1][j + 2] == 'o') {
@@ -340,7 +358,6 @@ public class board{
 			       return true;
 			   }
 		       }
-		
 		   }
 		   else if (board[i + 1][j - 2] == 'o'){
 		       if (board[i - 1][j + 2] == ' '){
@@ -364,7 +381,7 @@ public class board{
        return false;
    }
 
-    public boolean escape(){
+    public boolean escape(){ //IF CAN ESCAPE BY KILLING; KILL
 	boolean escaped = false;
 	for (int i=1;i<board.length-2;i++){
 	    for (int j=3;j<board[0].length-4;j++){
@@ -429,21 +446,25 @@ public class board{
 		else {
 		    if (board[i][j] == 'x'){
 			if (board[i+1][j+2] == 'o'){
-			    if (board[i+2][j+4] == ' '){
-				attacked = true;
-				board[i][j] = ' ';
-				board[i+1][j+2] = ' ';
-				board[i+2][j+4] = 'x';
-				return true;
+			    if (j+4 < 16){
+				if (board[i+2][j+4] == ' '){
+				    attacked = true;
+				    board[i][j] = ' ';
+				    board[i+1][j+2] = ' ';
+				    board[i+2][j+4] = 'x';
+				    return true;
+				}
 			    }
 			}
 			else if (board[i+1][j-2] == 'o'){
-			    if (board[i+2][j-4] == ' '){
-				attacked = true;
-				board[i][j] = ' ';
-				board[i+1][j-2] = ' ';
-				board[i+2][j-4] = 'x';
-				return true;
+			    if (j-4 >= 1){
+				if (board[i+2][j-4] == ' '){
+				    attacked = true;
+				    board[i][j] = ' ';
+				    board[i+1][j-2] = ' ';
+				    board[i+2][j-4] = 'x';
+				    return true;
+				}
 			    }
 			}
 		    }
@@ -476,7 +497,7 @@ public class board{
 	return false;
     }
 
-    public void randomMove(){
+    public void randomMove(){ //DO NOT MOVE INTO DANGER UNLESS THERE IS NOTHING ELSE TO DO
 	Random r = new Random();
 	boolean moved = false;
 	for (int i=0;i<board.length;i++){
