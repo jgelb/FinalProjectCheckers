@@ -1,4 +1,4 @@
-FinalProjectCheckers
+Checkers!
 ====================
 Joseph Gelb and Ari Hatzimemos
 
