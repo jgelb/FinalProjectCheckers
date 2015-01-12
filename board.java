@@ -497,7 +497,68 @@ public class board{
 	return false;
     }
 
-    public void randomMove(){ //DO NOT MOVE INTO DANGER UNLESS THERE IS NOTHING ELSE TO DO
+    public boolean randomMoveNoDanger(){ //DO NOT MOVE INTO DANGER
+	Random r = new Random();
+	boolean moved = false;
+	for (int i=0;i<board.length;i++){
+	    for (int j=0;j<board[0].length;j++){
+		if (board[i][j] == 'x'){
+		    if (j == 1){
+			if (board[i+1][j+2] == ' '){
+			    if (board[i+2][j+4] != 'o'){
+				if (r.nextInt(2) == 0){
+				    moved = true;
+				    board[i][j] = ' ';
+				    board[i+1][j+2] = 'x';
+				    return true;
+				}
+			    }
+			}
+		    }
+		    else if (j == 15){
+			if (board[i+1][j-2] == ' '){
+			    if (board[i+2][j-4] != 'o'){
+				if (r.nextInt(2) == 0){
+				    moved = true;
+				    board[i][j] = ' ';
+				    board[i+1][j-2] = 'x';
+				    return true;
+				}
+			    }
+			}
+		    }
+		    else{
+			if (board[i+1][j+2] == ' '){
+			    if (board[i+2][j+4] != 'o'){
+				if (r.nextInt(2) == 0){
+				    moved = true;
+				    board[i][j] = ' ';
+				    board[i+1][j+2] = 'x';
+				    return true;
+				}
+			    }
+			}
+			else if (board[i+1][j-2] == ' '){
+			    if (board[i+2][j-4] != 'o'){
+				if (r.nextInt(2) == 0){
+				    moved = true;
+				    board[i][j] = ' ';
+				    board[i+1][j-2] = 'x';
+				    return true;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+	if (moved == false){
+	    return false; 
+	}
+	return true;
+    }
+
+    public void randomMove(){
 	Random r = new Random();
 	boolean moved = false;
 	for (int i=0;i<board.length;i++){
@@ -524,7 +585,7 @@ public class board{
 			}
 		    }
 		    else{
-	        	if (board[i+1][j+2] == ' '){
+			if (board[i+1][j+2] == ' '){
 			    if (r.nextInt(2) == 0){
 				moved = true;
 				board[i][j] = ' ';
@@ -558,7 +619,10 @@ public class board{
 		if (move == false){
 		    move = moveEdge();
 		    if (move == false){
-			randomMove();
+			move = randomMoveNoDanger();
+			if (move == false){
+			    randomMove();
+			}
 		    }
 		}
 	    }
