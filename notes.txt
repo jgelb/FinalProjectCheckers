@@ -1,7 +1,7 @@
 kings for computer
 movement for kings
 double jumps
-make sure computer doesn't move into danger
+make sure computer doesn't move into danger *CHECK*
 when moving out of danger look to kill the piece threatening it
 graphical presentation of the game
 game over/congratulations message
