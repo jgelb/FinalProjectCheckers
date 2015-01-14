@@ -388,6 +388,7 @@ public class board{
 	}
 	return false;
     }
+    
     public boolean escape(){ //IF CAN ESCAPE BY KILLING; KILL
 	boolean escaped = false;
 	for (int i=1;i<board.length-2;i++){
@@ -395,22 +396,30 @@ public class board{
 		if (board[i][j] == 'x') {
 		    if (board[i + 1][j + 2] == 'o') {
 			if (board[i - 1][j - 2] == ' '){ //IN DANGER
-			    if (board[i+1][j-2] == ' '){
+			    if (board[i+2][j+4] == ' '){
 				escaped = true;
 				board[i][j] = ' ';
+				board[i +1][j+2] = ' ';
+				board[i + 2][j+4] = 'x';
+			    }
+			    else if (board[i+1][j-2] == ' '){
+				board[i][j] = ' ';
 				board[i+1][j-2] = 'x';
-				return true;
 			    }
 			}
 		    }
 		    else if (board[i + 1][j - 2] == 'o'){
 			if (board[i - 1][j + 2] == ' '){ //IN DANGER
-			    if (board[i+1][j+2] == ' '){
+			    if (board[i+2][j-4] == ' '){
 				escaped = true;
 				board[i][j] = ' ';
-				board[i+1][j+2] = 'x';
-				return true;
+				board[i+1][j-2] = ' ';
+				board[i+2][j-4] = 'x';
 			    }
+			    else if (board[i+1][j+2] == ' '){
+				board[i][j] = ' ';
+				board[i+1][j+2] = 'x';
+			    }			    
 			}
 		    }
 		}
@@ -509,23 +518,35 @@ public class board{
 		    if (j == 1){
 			if (board[i+1][j+2] == ' '){
 			    if (board[i+2][j+4] != 'o'){
-				if (r.nextInt(2) == 0){
+				if (board[i+2][j] == 'o'){
+				    if (board[i][j+4] == 'x'){
+					moved = true;
+					board[i][j] = ' ';
+					board[i+1][j+2] = 'x';
+				    }
+				}
+				else {
 				    moved = true;
 				    board[i][j] = ' ';
 				    board[i+1][j+2] = 'x';
-				    return true;
 				}
 			    }
 			}
 		    }
 		    else if (j == 15){
-			if (board[i+1][j-2] == ' '){
+		        if (board[i+1][j-2] == ' '){
 			    if (board[i+2][j-4] != 'o'){
-				if (r.nextInt(2) == 0){
+				if (board[i+2][j] == 'o'){
+				    if (board[i][j-4] == 'x'){
+					moved = true;
+					board[i][j] = ' ';
+					board[i+1][j-2] = 'x';
+				    }
+				}
+				else {
 				    moved = true;
 				    board[i][j] = ' ';
 				    board[i+1][j-2] = 'x';
-				    return true;
 				}
 			    }
 			}
@@ -533,21 +554,33 @@ public class board{
 		    else{
 			if (board[i+1][j+2] == ' '){
 			    if (board[i+2][j+4] != 'o'){
-				if (r.nextInt(2) == 0){
+			        if (board[i+2][j] == 'o'){
+				    if (board[i][j+4] == 'x'){
+					moved = true;
+					board[i][j] = ' ';
+					board[i+1][j+2] = 'x';
+				    }
+				}
+				else {
 				    moved = true;
 				    board[i][j] = ' ';
 				    board[i+1][j+2] = 'x';
-				    return true;
 				}
 			    }
 			}
 			else if (board[i+1][j-2] == ' '){
 			    if (board[i+2][j-4] != 'o'){
-				if (r.nextInt(2) == 0){
+			        if (board[i+2][j] == 'o'){
+				    if (board[i][j-4] == 'x'){
+					moved = true;
+					board[i][j] = ' ';
+					board[i+1][j-2] = 'x';
+				    }
+				}
+				else {
 				    moved = true;
 				    board[i][j] = ' ';
 				    board[i+1][j-2] = 'x';
-				    return true;
 				}
 			    }
 			}
@@ -555,10 +588,7 @@ public class board{
 		}
 	    }
 	}
-	if (moved == false){
-	    return false;
-	}
-	return true;
+	return false;
     }
     public void randomMove(){
 	Random r = new Random();
