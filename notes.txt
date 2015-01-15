@@ -2,6 +2,6 @@ kings for computer
 movement for kings
 double jumps *CHECK* (we have to edit it so you can tell the game that you want to double jump as opposed to just doing a normal jump and then it checking for you)
 make sure computer doesn't move into danger *CHECK*
-when moving out of danger look to kill the piece threatening it
+when moving out of danger look to kill the piece threatening it *CHECK*
 graphical presentation of the game
 game over/congratulations message
