@@ -15,6 +15,6 @@ If there is a possible double jump, make the first capture and the second one wi
 
 The computer moves based on a simple AI, which has a prioritized set of situations to look for.  
 
-See if you can beat the computer by taking all of its pieces!
+See if you can beat the computer by taking all of its pieces!  We can't beat the game, and we made it, so either the AI is good, or we are really bad at checkers.  
 
 
