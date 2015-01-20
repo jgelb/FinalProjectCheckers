@@ -240,301 +240,699 @@ public class board{
 	    System.out.println("Error");
 	    choosePieceSpace();
 	}
+	chooseMoveSpace();
     }
 
     public void doMove(){
 	//Here will be code for all of the possible move options
 
-	//Basic moves
-	if (moveRow == pieceRow - 1 && moveCol == pieceCol + 2){
-	    if ( board[moveRow][moveCol]=='x'){
-		System.out.println ("Illegal move");
-		choosePieceSpace();
-	    }
-	    else if ( board[moveRow][moveCol]=='o'){
-		System.out.println ("Illegal move");
-		choosePieceSpace();
-	    }
-	    else {
-		if (moveRow == 0){
-		    board[moveRow][moveCol] = 'K';
-		    System.out.println("You got a King!");
+	//Basic moves for regular piece
+	if (board[pieceRow][pieceCol] == 'o'){
+	    if (moveRow == pieceRow - 1 && moveCol == pieceCol + 2){
+		if ( board[moveRow][moveCol]=='x'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if ( board[moveRow][moveCol]=='o'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == 'K'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == '$'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
 		}
 		else {
-		    board[moveRow][moveCol] = 'o';
+		    if (moveRow == 0){
+			board[moveRow][moveCol] = 'K';
+			System.out.println("You got a King!");
+		    }
+		    else {
+			board[moveRow][moveCol] = 'o';
+		    }
+		    board[pieceRow][pieceCol] = ' ';
 		}
-		board[pieceRow][pieceCol] = ' ';
-	    }
 		
-      	}
-	else if (moveRow == pieceRow - 1 && moveCol == pieceCol - 2){
-	    if ( board[moveRow][moveCol]=='x'){
-		System.out.println ("Illegal move");
-		choosePieceSpace();
 	    }
-	    else if ( board[moveRow][moveCol]=='o'){
-		System.out.println ("Illegal move");
-		choosePieceSpace();
-	    }
-	    else {
-		if (moveRow == 0){
-		    board[moveRow][moveCol] = 'K';
-		    System.out.println("You got a King!");
+	    else if (moveRow == pieceRow - 1 && moveCol == pieceCol - 2){
+		if ( board[moveRow][moveCol]=='x'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if ( board[moveRow][moveCol]=='o'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == 'K'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == '$'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
 		}
 		else {
-		    board[moveRow][moveCol] = 'o';
+		    if (moveRow == 0){
+			board[moveRow][moveCol] = 'K';
+			System.out.println("You got a King!");
+		    }
+		    else {
+			board[moveRow][moveCol] = 'o';
+		    }
+		    board[pieceRow][pieceCol] = ' ';
 		}
-		board[pieceRow][pieceCol] = ' ';
-	    }
 		
-      	}
-	//-------------------------------------------------------------------
-	//Capture moves
-        
-	else if (moveRow == pieceRow - 2 && moveCol == pieceCol + 4){
+	    }
+
+	    /* CAPTURE MOVES */
+	    else if (moveRow == pieceRow - 2 && moveCol == pieceCol + 4){
 	    
-	    if ( board[moveRow][moveCol]=='x'){
-		System.out.println ("Illegal move");
-		choosePieceSpace();
-	    }
-	    else if ( board[moveRow][moveCol]=='o'){
-		System.out.println ("Illegal move");
-		choosePieceSpace();
-	    }
-	    else if  (( board[moveRow][moveCol]==' ') && (board[moveRow + 1][moveCol - 2]=='x')){
+		if ( board[moveRow][moveCol]=='x'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if ( board[moveRow][moveCol]=='o'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == 'K'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == '$'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if  (( board[moveRow][moveCol]==' ') && (board[moveRow + 1][moveCol - 2]=='x')){
 		
-		if (moveRow == 0){
-		    board[moveRow][moveCol] = 'K';
+		    if (moveRow == 0){
+			board[moveRow][moveCol] = 'K';
+		    }
+		    else {
+			board[moveRow][moveCol] = 'o';
+		    }
+		    board[pieceRow][pieceCol] = ' ';
+		    board[moveRow + 1][moveCol - 2] = ' ';
 		}
-		else {
-		    board[moveRow][moveCol] = 'o';
+		if (moveRow >= 2){
+		    if (moveCol == 1){
+			if (board[moveRow-1][moveCol+2] == 'x'){
+			    if (board[moveRow-2][moveCol+4] == ' '){
+				System.out.println("Do you want to do a double jump? (YES/NO)");
+				Scanner scanner = new Scanner(System.in);
+				String Action = scanner.nextLine();
+				if (Action.equals("YES")){
+				    board[moveRow][moveCol] = ' ';
+				    board[moveRow-1][moveCol+2] = ' ';
+				    if (moveRow-2 == 0){
+					board[moveRow-2][moveCol+4] = 'K';
+				    }
+				    else {
+					board[moveRow-2][moveCol+4] = 'o';
+				    }
+				}
+				else if (Action.equals("NO")){
+			        
+				}
+				else {
+				
+				}
+			    }
+			}
+		    }
+		    else if (moveCol == 15){
+			if (board[moveRow-1][moveCol-2] == 'x'){
+			    if (board[moveRow-2][moveCol-4] == ' '){
+				System.out.println("Do you want to do a double jump? (YES/NO)");
+				Scanner scanner = new Scanner(System.in);
+				String Action = scanner.nextLine();
+				if (Action.equals("YES")){
+				    board[moveRow][moveCol] = ' ';
+				    board[moveRow-1][moveCol-2] = ' ';
+				    if (moveRow-2 == 0){
+					board[moveRow-2][moveCol-4] = 'K';
+				    }
+				    else {
+					board[moveRow-2][moveCol-4] = 'o';
+				    }
+				}
+				else if (Action.equals("NO")){
+			        
+				}
+				else {
+				
+				}
+			    }
+			}
+		    }
+		    else {
+			if (board[moveRow-1][moveCol+2] == 'x'){
+			    if (board[moveRow-2][moveCol+4] == ' '){
+				System.out.println("Do you want to do a double jump? (YES/NO)");
+				Scanner scanner = new Scanner(System.in);
+				String Action = scanner.nextLine();
+				if (Action.equals("YES")){
+				    board[moveRow][moveCol] = ' ';
+				    board[moveRow-1][moveCol+2] = ' ';
+				    if (moveRow-2 == 0){
+					board[moveRow-2][moveCol+4] = 'K';
+				    }
+				    else {
+					board[moveRow-2][moveCol+4] = 'o';
+				    }
+				}
+				else if (Action.equals("NO")){
+			        
+				}
+				else {
+				
+				}
+			    }
+			}
+			else if (board[moveRow-1][moveCol-2] == 'x'){
+			    if (board[moveRow-2][moveCol-4] == ' '){
+				System.out.println("Do you want to do a double jump? (YES/NO)");
+				Scanner scanner = new Scanner(System.in);
+				String Action = scanner.nextLine();
+				if (Action.equals("YES")){
+				    board[moveRow][moveCol] = ' ';
+				    board[moveRow-1][moveCol-2] = ' ';
+				    if (moveRow-2 == 0){
+					board[moveRow-2][moveCol-4] = 'K';
+				    }
+				    else {
+					board[moveRow-2][moveCol-4] = 'o';
+				    }
+				}
+				else if (Action.equals("NO")){
+			        
+				}
+				else {
+				
+				}
+			    }
+			}
+		    }
 		}
-		board[pieceRow][pieceCol] = ' ';
-		board[moveRow + 1][moveCol - 2] = ' ';
 	    }
-	    if (moveRow >= 2){
-		if (moveCol == 1){
-		    if (board[moveRow-1][moveCol+2] == 'x'){
-			if (board[moveRow-2][moveCol+4] == ' '){
-			    System.out.println("Do you want to do a double jump? (YES/NO)");
-			    Scanner scanner = new Scanner(System.in);
-			    String Action = scanner.nextLine();
-			    if (Action.equals("YES")){
-				board[moveRow][moveCol] = ' ';
-				board[moveRow-1][moveCol+2] = ' ';
-				if (moveRow-2 == 0){
-				    board[moveRow-2][moveCol+4] = 'K';
+
+
+	    else if (moveRow == pieceRow - 2 && moveCol == pieceCol - 4){
+	    
+		if ( board[moveRow][moveCol]=='x'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if ( board[moveRow][moveCol]=='o'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == 'K'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == '$'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if  (( board[moveRow][moveCol]==' ') && (board[moveRow + 1][moveCol + 2]=='x')){
+		
+		    if (moveRow == 0){
+			board[moveRow][moveCol] = 'K';
+		    }
+		    else {
+			board[moveRow][moveCol] = 'o';
+		    }
+		    board[pieceRow][pieceCol] = ' ';
+		    board[moveRow + 1][moveCol + 2] = ' ';
+		}
+		if (moveRow >= 2){
+		    if (moveCol == 1){
+			if (board[moveRow-1][moveCol+2] == 'x'){
+			    if (board[moveRow-2][moveCol+4] == ' '){
+				System.out.println("Do you want to do a double jump? (YES/NO)");
+				Scanner scanner = new Scanner(System.in);
+				String Action = scanner.nextLine();
+				if (Action.equals("YES")){
+				    board[moveRow][moveCol] = ' ';
+				    board[moveRow-1][moveCol+2] = ' ';
+				    if (moveRow-2 == 0){
+					board[moveRow-2][moveCol+4] = 'K';
+				    }
+				    else {
+					board[moveRow-2][moveCol+4] = 'o';
+				    }
+				}
+				else if (Action.equals("NO")){
+			        
 				}
 				else {
-				    board[moveRow-2][moveCol+4] = 'o';
+				
 				}
 			    }
-			    else if (Action.equals("NO")){
+			}
+		    }
+		    else if (moveCol == 15){
+			if (board[moveRow-1][moveCol-2] == 'x'){
+			    if (board[moveRow-2][moveCol-4] == ' '){
+				System.out.println("Do you want to do a double jump? (YES/NO)");
+				Scanner scanner = new Scanner(System.in);
+				String Action = scanner.nextLine();
+				if (Action.equals("YES")){
+				    board[moveRow][moveCol] = ' ';
+				    board[moveRow-1][moveCol-2] = ' ';
+				    if (moveRow-2 == 0){
+					board[moveRow-2][moveCol-4] = 'K';
+				    }
+				    else {
+					board[moveRow-2][moveCol-4] = 'o';
+				    }
+				}
+				else if (Action.equals("NO")){
 			        
-			    }
-			    else {
+				}
+				else {
 				
+				}
+			    }
+			}
+		    }
+		    else {
+			if (board[moveRow-1][moveCol+2] == 'x'){
+			    if (board[moveRow-2][moveCol+4] == ' '){
+				System.out.println("Do you want to do a double jump? (YES/NO)");
+				Scanner scanner = new Scanner(System.in);
+				String Action = scanner.nextLine();
+				if (Action.equals("YES")){
+				    board[moveRow][moveCol] = ' ';
+				    board[moveRow-1][moveCol+2] = ' ';
+				    if (moveRow-2 == 0){
+					board[moveRow-2][moveCol+4] = 'K';
+				    }
+				    else {
+					board[moveRow-2][moveCol+4] = 'o';
+				    }
+				}
+				else if (Action.equals("NO")){
+			        
+				}
+				else {
+				
+				}
+			    }
+			}
+			else if (board[moveRow-1][moveCol-2] == 'x'){
+			    if (board[moveRow-2][moveCol-4] == ' '){
+				System.out.println("Do you want to do a double jump? (YES/NO)");
+				Scanner scanner = new Scanner(System.in);
+				String Action = scanner.nextLine();
+				if (Action.equals("YES")){
+				    board[moveRow][moveCol] = ' ';
+				    board[moveRow-1][moveCol-2] = ' ';
+				    if (moveRow-2 == 0){
+					board[moveRow-2][moveCol-4] = 'K';
+				    }
+				    else {
+					board[moveRow-2][moveCol-4] = 'o';
+				    }
+				}
+				else if (Action.equals("NO")){
+			        
+				}
+				else {
+				
+				}
 			    }
 			}
 		    }
 		}
-		else if (moveCol == 15){
-		    if (board[moveRow-1][moveCol-2] == 'x'){
-			if (board[moveRow-2][moveCol-4] == ' '){
-			    System.out.println("Do you want to do a double jump? (YES/NO)");
-			    Scanner scanner = new Scanner(System.in);
-			    String Action = scanner.nextLine();
-			    if (Action.equals("YES")){
-				board[moveRow][moveCol] = ' ';
-				board[moveRow-1][moveCol-2] = ' ';
-				if (moveRow-2 == 0){
-				    board[moveRow-2][moveCol-4] = 'K';
-				}
-				else {
-				    board[moveRow-2][moveCol-4] = 'o';
-				}
-			    }
-			    else if (Action.equals("NO")){
-			        
-			    }
-			    else {
-				
-			    }
-			}
-		    }
-		}
-	        else {
-		    if (board[moveRow-1][moveCol+2] == 'x'){
-			if (board[moveRow-2][moveCol+4] == ' '){
-			    System.out.println("Do you want to do a double jump? (YES/NO)");
-			    Scanner scanner = new Scanner(System.in);
-			    String Action = scanner.nextLine();
-			    if (Action.equals("YES")){
-				board[moveRow][moveCol] = ' ';
-				board[moveRow-1][moveCol+2] = ' ';
-				if (moveRow-2 == 0){
-				    board[moveRow-2][moveCol+4] = 'K';
-				}
-				else {
-				    board[moveRow-2][moveCol+4] = 'o';
-				}
-			    }
-			    else if (Action.equals("NO")){
-			        
-			    }
-			    else {
-				
-			    }
-			}
-		    }
-		    else if (board[moveRow-1][moveCol-2] == 'x'){
-			if (board[moveRow-2][moveCol-4] == ' '){
-			    System.out.println("Do you want to do a double jump? (YES/NO)");
-			    Scanner scanner = new Scanner(System.in);
-			    String Action = scanner.nextLine();
-			    if (Action.equals("YES")){
-				board[moveRow][moveCol] = ' ';
-				board[moveRow-1][moveCol-2] = ' ';
-				if (moveRow-2 == 0){
-				    board[moveRow-2][moveCol-4] = 'K';
-				}
-				else {
-				    board[moveRow-2][moveCol-4] = 'o';
-				}
-			    }
-			    else if (Action.equals("NO")){
-			        
-			    }
-			    else {
-				
-			    }
-			}
-		    }
-		}
+	    }
+	    else {
+		System.out.println("Illegal Move");
+		choosePieceSpace();
 	    }
 	}
 
-
-	else if (moveRow == pieceRow - 2 && moveCol == pieceCol - 4){
-	    
-	    if ( board[moveRow][moveCol]=='x'){
-		System.out.println ("Illegal move");
-		choosePieceSpace();
-	    }
-	    else if ( board[moveRow][moveCol]=='o'){
-		System.out.println ("Illegal move");
-		choosePieceSpace();
-	    }
-	    else if  (( board[moveRow][moveCol]==' ') && (board[moveRow + 1][moveCol + 2]=='x')){
-		
-		if (moveRow == 0){
-		    board[moveRow][moveCol] = 'K';
+	/* FOR KINGS */
+	else if (board[pieceRow][pieceCol] == 'K'){
+	    if (moveRow == pieceRow - 1 && moveCol == pieceCol + 2){
+		if ( board[moveRow][moveCol]=='x'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if ( board[moveRow][moveCol]=='o'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == 'K'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == '$'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
 		}
 		else {
-		    board[moveRow][moveCol] = 'o';
+		    board[moveRow][moveCol] = 'K';
+		    board[pieceRow][pieceCol] = ' ';
 		}
-		board[pieceRow][pieceCol] = ' ';
-		board[moveRow + 1][moveCol + 2] = ' ';
 	    }
-	    if (moveRow >= 2){
-		if (moveCol == 1){
-		    if (board[moveRow-1][moveCol+2] == 'x'){
-			if (board[moveRow-2][moveCol+4] == ' '){
-			    System.out.println("Do you want to do a double jump? (YES/NO)");
-			    Scanner scanner = new Scanner(System.in);
-			    String Action = scanner.nextLine();
-			    if (Action.equals("YES")){
-				board[moveRow][moveCol] = ' ';
-				board[moveRow-1][moveCol+2] = ' ';
-				if (moveRow-2 == 0){
-				    board[moveRow-2][moveCol+4] = 'K';
+	    else if (moveRow == pieceRow - 1 && moveCol == pieceCol - 2){
+		if ( board[moveRow][moveCol]=='x'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if ( board[moveRow][moveCol]=='o'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == 'K'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == '$'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else {
+		    board[moveRow][moveCol] = 'K';
+		    board[pieceRow][pieceCol] = ' ';
+		}	
+	    }
+	    else if (moveRow == pieceRow + 1 && moveCol == pieceCol + 2){
+		if ( board[moveRow][moveCol]=='x'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if ( board[moveRow][moveCol]=='o'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == 'K'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == '$'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else {
+		    board[moveRow][moveCol] = 'K';
+		    board[pieceRow][pieceCol] = ' ';
+		}
+	    }
+	    else if (moveRow == pieceRow + 1 && moveCol == pieceCol - 2){
+		if ( board[moveRow][moveCol]=='x'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if ( board[moveRow][moveCol]=='o'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == 'K'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == '$'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else {
+		    board[moveRow][moveCol] = 'K';
+		    board[pieceRow][pieceCol] = ' ';
+		}	
+	    }
+
+	    /* CAPTURE MOVES */
+	    else if (moveRow == pieceRow - 2 && moveCol == pieceCol + 4){
+	    
+		if ( board[moveRow][moveCol]=='x'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if ( board[moveRow][moveCol]=='o'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == 'K'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == '$'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if  (( board[moveRow][moveCol]==' ') && (board[moveRow + 1][moveCol - 2]=='x')){
+		
+		    if (moveRow == 0){
+			board[moveRow][moveCol] = 'K';
+		    }
+		    else {
+			board[moveRow][moveCol] = 'K';
+		    }
+		    board[pieceRow][pieceCol] = ' ';
+		    board[moveRow + 1][moveCol - 2] = ' ';
+		}
+		if (moveRow >= 2){
+		    if (moveCol == 1){
+			if (board[moveRow-1][moveCol+2] == 'x'){
+			    if (board[moveRow-2][moveCol+4] == ' '){
+				System.out.println("Do you want to do a double jump? (YES/NO)");
+				Scanner scanner = new Scanner(System.in);
+				String Action = scanner.nextLine();
+				if (Action.equals("YES")){
+				    board[moveRow][moveCol] = ' ';
+				    board[moveRow-1][moveCol+2] = ' ';
+				    if (moveRow-2 == 0){
+					board[moveRow-2][moveCol+4] = 'K';
+				    }
+				    else {
+					board[moveRow-2][moveCol+4] = 'K';
+				    }
+				}
+				else if (Action.equals("NO")){
+			        
 				}
 				else {
-				    board[moveRow-2][moveCol+4] = 'o';
+				
 				}
 			    }
-			    else if (Action.equals("NO")){
+			}
+		    }
+		    else if (moveCol == 15){
+			if (board[moveRow-1][moveCol-2] == 'x'){
+			    if (board[moveRow-2][moveCol-4] == ' '){
+				System.out.println("Do you want to do a double jump? (YES/NO)");
+				Scanner scanner = new Scanner(System.in);
+				String Action = scanner.nextLine();
+				if (Action.equals("YES")){
+				    board[moveRow][moveCol] = ' ';
+				    board[moveRow-1][moveCol-2] = ' ';
+				    if (moveRow-2 == 0){
+					board[moveRow-2][moveCol-4] = 'K';
+				    }
+				    else {
+					board[moveRow-2][moveCol-4] = 'K';
+				    }
+				}
+				else if (Action.equals("NO")){
 			        
-			    }
-			    else {
+				}
+				else {
 				
+				}
+			    }
+			}
+		    }
+		    else {
+			if (board[moveRow-1][moveCol+2] == 'x'){
+			    if (board[moveRow-2][moveCol+4] == ' '){
+				System.out.println("Do you want to do a double jump? (YES/NO)");
+				Scanner scanner = new Scanner(System.in);
+				String Action = scanner.nextLine();
+				if (Action.equals("YES")){
+				    board[moveRow][moveCol] = ' ';
+				    board[moveRow-1][moveCol+2] = ' ';
+				    if (moveRow-2 == 0){
+					board[moveRow-2][moveCol+4] = 'K';
+				    }
+				    else {
+					board[moveRow-2][moveCol+4] = 'K';
+				    }
+				}
+				else if (Action.equals("NO")){
+			        
+				}
+				else {
+				
+				}
+			    }
+			}
+			else if (board[moveRow-1][moveCol-2] == 'x'){
+			    if (board[moveRow-2][moveCol-4] == ' '){
+				System.out.println("Do you want to do a double jump? (YES/NO)");
+				Scanner scanner = new Scanner(System.in);
+				String Action = scanner.nextLine();
+				if (Action.equals("YES")){
+				    board[moveRow][moveCol] = ' ';
+				    board[moveRow-1][moveCol-2] = ' ';
+				    if (moveRow-2 == 0){
+					board[moveRow-2][moveCol-4] = 'K';
+				    }
+				    else {
+					board[moveRow-2][moveCol-4] = 'K';
+				    }
+				}
+				else if (Action.equals("NO")){
+			        
+				}
+				else {
+				
+				}
 			    }
 			}
 		    }
 		}
-		else if (moveCol == 15){
-		    if (board[moveRow-1][moveCol-2] == 'x'){
-			if (board[moveRow-2][moveCol-4] == ' '){
-			    System.out.println("Do you want to do a double jump? (YES/NO)");
-			    Scanner scanner = new Scanner(System.in);
-			    String Action = scanner.nextLine();
-			    if (Action.equals("YES")){
-				board[moveRow][moveCol] = ' ';
-				board[moveRow-1][moveCol-2] = ' ';
-				if (moveRow-2 == 0){
-				    board[moveRow-2][moveCol-4] = 'K';
+	    }
+
+
+	    else if (moveRow == pieceRow - 2 && moveCol == pieceCol - 4){
+	    
+		if ( board[moveRow][moveCol]=='x'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if ( board[moveRow][moveCol]=='o'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == 'K'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == '$'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if  (( board[moveRow][moveCol]==' ') && (board[moveRow + 1][moveCol + 2]=='x')){
+		
+		    if (moveRow == 0){
+			board[moveRow][moveCol] = 'K';
+		    }
+		    else {
+			board[moveRow][moveCol] = 'K';
+		    }
+		    board[pieceRow][pieceCol] = ' ';
+		    board[moveRow + 1][moveCol + 2] = ' ';
+		}
+		if (moveRow >= 2){
+		    if (moveCol == 1){
+			if (board[moveRow-1][moveCol+2] == 'x'){
+			    if (board[moveRow-2][moveCol+4] == ' '){
+				System.out.println("Do you want to do a double jump? (YES/NO)");
+				Scanner scanner = new Scanner(System.in);
+				String Action = scanner.nextLine();
+				if (Action.equals("YES")){
+				    board[moveRow][moveCol] = ' ';
+				    board[moveRow-1][moveCol+2] = ' ';
+				    if (moveRow-2 == 0){
+					board[moveRow-2][moveCol+4] = 'K';
+				    }
+				    else {
+					board[moveRow-2][moveCol+4] = 'K';
+				    }
+				}
+				else if (Action.equals("NO")){
+			        
 				}
 				else {
-				    board[moveRow-2][moveCol-4] = 'o';
+				
 				}
 			    }
-			    else if (Action.equals("NO")){
+			}
+		    }
+		    else if (moveCol == 15){
+			if (board[moveRow-1][moveCol-2] == 'x'){
+			    if (board[moveRow-2][moveCol-4] == ' '){
+				System.out.println("Do you want to do a double jump? (YES/NO)");
+				Scanner scanner = new Scanner(System.in);
+				String Action = scanner.nextLine();
+				if (Action.equals("YES")){
+				    board[moveRow][moveCol] = ' ';
+				    board[moveRow-1][moveCol-2] = ' ';
+				    if (moveRow-2 == 0){
+					board[moveRow-2][moveCol-4] = 'K';
+				    }
+				    else {
+					board[moveRow-2][moveCol-4] = 'K';
+				    }
+				}
+				else if (Action.equals("NO")){
 			        
-			    }
-			    else {
+				}
+				else {
 				
+				}
+			    }
+			}
+		    }
+		    else {
+			if (board[moveRow-1][moveCol+2] == 'x'){
+			    if (board[moveRow-2][moveCol+4] == ' '){
+				System.out.println("Do you want to do a double jump? (YES/NO)");
+				Scanner scanner = new Scanner(System.in);
+				String Action = scanner.nextLine();
+				if (Action.equals("YES")){
+				    board[moveRow][moveCol] = ' ';
+				    board[moveRow-1][moveCol+2] = ' ';
+				    if (moveRow-2 == 0){
+					board[moveRow-2][moveCol+4] = 'K';
+				    }
+				    else {
+					board[moveRow-2][moveCol+4] = 'K';
+				    }
+				}
+				else if (Action.equals("NO")){
+			        
+				}
+				else {
+				
+				}
+			    }
+			}
+			else if (board[moveRow-1][moveCol-2] == 'x'){
+			    if (board[moveRow-2][moveCol-4] == ' '){
+				System.out.println("Do you want to do a double jump? (YES/NO)");
+				Scanner scanner = new Scanner(System.in);
+				String Action = scanner.nextLine();
+				if (Action.equals("YES")){
+				    board[moveRow][moveCol] = ' ';
+				    board[moveRow-1][moveCol-2] = ' ';
+				    if (moveRow-2 == 0){
+					board[moveRow-2][moveCol-4] = 'K';
+				    }
+				    else {
+					board[moveRow-2][moveCol-4] = 'K';
+				    }
+				}
+				else if (Action.equals("NO")){
+			        
+				}
+				else {
+				
+				}
 			    }
 			}
 		    }
 		}
-	        else {
-		    if (board[moveRow-1][moveCol+2] == 'x'){
-			if (board[moveRow-2][moveCol+4] == ' '){
-			    System.out.println("Do you want to do a double jump? (YES/NO)");
-			    Scanner scanner = new Scanner(System.in);
-			    String Action = scanner.nextLine();
-			    if (Action.equals("YES")){
-				board[moveRow][moveCol] = ' ';
-				board[moveRow-1][moveCol+2] = ' ';
-				if (moveRow-2 == 0){
-				    board[moveRow-2][moveCol+4] = 'K';
-				}
-				else {
-				    board[moveRow-2][moveCol+4] = 'o';
-				}
-			    }
-			    else if (Action.equals("NO")){
-			        
-			    }
-			    else {
-				
-			    }
-			}
-		    }
-		    else if (board[moveRow-1][moveCol-2] == 'x'){
-			if (board[moveRow-2][moveCol-4] == ' '){
-			    System.out.println("Do you want to do a double jump? (YES/NO)");
-			    Scanner scanner = new Scanner(System.in);
-			    String Action = scanner.nextLine();
-			    if (Action.equals("YES")){
-				board[moveRow][moveCol] = ' ';
-				board[moveRow-1][moveCol-2] = ' ';
-				if (moveRow-2 == 0){
-				    board[moveRow-2][moveCol-4] = 'K';
-				}
-				else {
-				    board[moveRow-2][moveCol-4] = 'o';
-				}
-			    }
-			    else if (Action.equals("NO")){
-			        
-			    }
-			    else {
-				
-			    }
-			}
-		    }
-		}
+	    }
+	    else {
+		System.out.println("Illegal Move");
+		choosePieceSpace();
 	    }
 	}
     }
@@ -718,15 +1116,17 @@ public class board{
 			    if (board[i+2][j+4] != 'o'){
 				if (board[i+2][j] == 'o'){
 				    if (board[i][j+4] == 'x'){
-					return true;
+				        
 					board[i][j] = ' ';
 					board[i+1][j+2] = 'x';
+					return true;
 				    }
 				}
 				else {
-				    return true;
+				    
 				    board[i][j] = ' ';
 				    board[i+1][j+2] = 'x';
+				    return true;
 				}
 			    }
 			}
@@ -736,15 +1136,17 @@ public class board{
 			    if (board[i+2][j-4] != 'o'){
 				if (board[i+2][j] == 'o'){
 				    if (board[i][j-4] == 'x'){
-					return true;
+				        
 					board[i][j] = ' ';
 					board[i+1][j-2] = 'x';
+					return true;
 				    }
 				}
 				else {
-				    return true;
+				    
 				    board[i][j] = ' ';
 				    board[i+1][j-2] = 'x';
+				    return true;
 				}
 			    }
 			}
@@ -754,15 +1156,17 @@ public class board{
 			    if (board[i+2][j+4] != 'o'){
 			        if (board[i+2][j] == 'o'){
 				    if (board[i][j+4] == 'x'){
-					return true;
+				        
 					board[i][j] = ' ';
 					board[i+1][j+2] = 'x';
+					return true;
 				    }
 				}
 				else {
-				    return true;
+				    
 				    board[i][j] = ' ';
 				    board[i+1][j+2] = 'x';
+				    return true;
 				}
 			    }
 			}
@@ -770,15 +1174,17 @@ public class board{
 			    if (board[i+2][j-4] != 'o'){
 			        if (board[i+2][j] == 'o'){
 				    if (board[i][j-4] == 'x'){
-					return true;
+				        
 					board[i][j] = ' ';
 					board[i+1][j-2] = 'x';
+					return true;
 				    }
 				}
 				else {
-				    return true;
+				    
 				    board[i][j] = ' ';
 				    board[i+1][j-2] = 'x';
+				    return true;
 				}
 			    }
 			}
@@ -884,7 +1290,6 @@ public class board{
 	System.out.println(x);
 	while (x.gameOver == false){
 	    x.choosePieceSpace();
-	    x.chooseMoveSpace();
 	    x.doMove();
 	    x.Gameover();
 	    System.out.println(x);
