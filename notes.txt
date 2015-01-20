@@ -1,3 +1,5 @@
+This is a list of general stuff that we need to work on.  Items marked with *CHECK* have been conmpleted
+
 kings for computer
 movement for kings
 double jumps *CHECK* (we have to edit it so you can tell the game that you want to double jump as opposed to just doing a normal jump and then it checking for you)
