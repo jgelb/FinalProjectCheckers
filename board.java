@@ -894,13 +894,13 @@ public class board{
 		if (board[i][j] == 'x') {
 		    if (board[i + 1][j + 2] == 'o') {
 			if (board[i - 1][j - 2] == ' '){
-			    if (board[i -2][j - 4] == 'x'){
+			    if (board[i -2][j - 4] == 'x' || board[i-2][j-4] == '$'){
 				blocked = true;
 				board[i-2][j-4] = ' ';
 				board [i -1][j - 2] = 'x';
 				return true;
 			    }
-			    else if (board[i -2][j] == 'x'){
+			    else if (board[i -2][j] == 'x' || board[i-2][j] == '$'){
 				blocked = true;
 				board[i-2][j] = ' ';
 				board [i -1][j -2] = 'x';
@@ -910,13 +910,47 @@ public class board{
 		    }
 		    else if (board[i + 1][j - 2] == 'o'){
 			if (board[i - 1][j + 2] == ' '){
-			    if (board[i -2][j + 4] == 'x'){
+			    if (board[i -2][j + 4] == 'x' || board[i-2][j+4] == '$'){
 				blocked = true;
 				board[i-2][j+4] = ' ';
 				board [i -1][j + 2] = 'x';
 				return true;
 			    }
-			    else if (board[i -2][j] == 'x'){
+			    else if (board[i -2][j] == 'x' || board[i-2][j-4] == '$'){
+				blocked = true;
+				board[i-2][j] = ' ';
+				board [i -1][j + 2] = 'x';
+				return true;
+			    }
+			}
+		    }
+		}
+		else if (board[i][j] == '$') {
+		    if (board[i + 1][j + 2] == 'o') {
+			if (board[i - 1][j - 2] == ' '){
+			    if (board[i -2][j - 4] == 'x' || board[i-2][j-4] == '$'){
+				blocked = true;
+				board[i-2][j-4] = ' ';
+				board [i -1][j - 2] = '$';
+				return true;
+			    }
+			    else if (board[i -2][j] == 'x' || board[i-2][j] == '$' ){
+				blocked = true;
+				board[i-2][j] = ' ';
+				board [i -1][j -2] = '$';
+				return true;
+			    }
+			}
+		    }
+		    else if (board[i + 1][j - 2] == 'o'){
+			if (board[i - 1][j + 2] == ' '){
+			    if (board[i -2][j + 4] == 'x' || board[i-2][j+4] == '$'){
+				blocked = true;
+				board[i-2][j+4] = ' ';
+				board [i -1][j + 2] = 'x';
+				return true;
+			    }
+			    else if (board[i -2][j] == 'x'|| board[i-2][j] == '$'){
 				blocked = true;
 				board[i-2][j] = ' ';
 				board [i -1][j + 2] = 'x';
@@ -929,6 +963,8 @@ public class board{
 	}
 	return false;
     }
+
+    //I stopped working on kings here.  We will continue tomorrow.  
     public boolean escape(){ //IF CAN ESCAPE BY KILLING; KILL
 	boolean escaped = false;
 	for (int i=1;i<board.length-2;i++){
