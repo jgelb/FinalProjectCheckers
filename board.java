@@ -7,7 +7,7 @@ public class board{
     public int moveCol = 0;
     public int pieceRow = 0;
     public int pieceCol = 0;
-    public boolean gameOver = false;
+    public int gameOver = 0;
     //To set up the board----------------------------------------------------
     public board(){
 	int k = 1;
@@ -1243,22 +1243,30 @@ public class board{
     }
     public void Gameover(){
 	//tests to see if the game is over
-	int counter = 0;
+	int counterEnemy = 0;
+	int counterOwn = 0;
 	for (int i=0;i<board.length;i++){
 	    for (int j=0;j<board[0].length;j++){
-		if (board[i][j]=='x'){
-		    counter++;
+		if (board[i][j]=='x' || board[i][j] =='$'){
+		    counterEnemy++;
+		}
+		if (board[i][j] == 'o' || board[i][j] == 'K'){
+		    counterOwn++;
 		}
 	    }
 	}
-	if (counter<1){
-	    gameOver=true;
+    
+	if (counterOwn<1){
+	    gameOver=1;
+	}
+	else if (counterEnemy <1){
+	    gameOver = 2;
 	}
     }
     public static void main(String[] args){
 	board x = new board();
 	System.out.println(x);
-	while (x.gameOver == false){
+	while (x.gameOver == 0){
 	    x.choosePieceSpace();
 	    x.doMove();
 	    x.Gameover();
@@ -1267,10 +1275,11 @@ public class board{
 	    x.Gameover();
 	    System.out.println(x);
 	}
-	// x.Computermove;
-	//System.out.println(x);
-	//}
-	//if (gameOver = true){
-	//System.out.println("Congratulations");}
+	if (x.gameOver == 1){
+	    System.out.println("You Lose! Run the program again to play again");
+	}
+	if (x.gameOver == 2){
+	    System.out.println("You win! Congratulations!");
+	}
     }
 }
