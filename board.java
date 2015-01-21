@@ -655,17 +655,11 @@ public class board{
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
-		else if (( board[moveRow][moveCol]==' ') && (board[moveRow + 1][moveCol - 2]=='x')){
-		    if (moveRow == 0){
-			board[moveRow][moveCol] = 'K';
-		    }
-		    else {
-			board[moveRow][moveCol] = 'K';
-		    }
+		else if (board[moveRow + 1][moveCol - 2]=='x'){
+		    board[moveRow][moveCol] = 'K';
 		    board[pieceRow][pieceCol] = ' ';
 		    board[moveRow + 1][moveCol - 2] = ' ';
-		}
-        
+		}        
 		if (moveRow >= 2){
 		    if (moveCol == 1){
 			if (board[moveRow-1][moveCol+2] == 'x'){
@@ -676,16 +670,7 @@ public class board{
 				if (Action.equals("YES")){
 				    board[moveRow][moveCol] = ' ';
 				    board[moveRow-1][moveCol+2] = ' ';
-				    if (moveRow-2 == 0){
-					board[moveRow-2][moveCol+4] = 'K';
-				    }
-				    else {
-					board[moveRow-2][moveCol+4] = 'K';
-				    }
-				}
-				else if (Action.equals("NO")){
-				}
-				else {
+				    board[moveRow-2][moveCol+4] = 'K';
 				}
 			    }
 			}
@@ -699,16 +684,7 @@ public class board{
 				if (Action.equals("YES")){
 				    board[moveRow][moveCol] = ' ';
 				    board[moveRow-1][moveCol-2] = ' ';
-				    if (moveRow-2 == 0){
-					board[moveRow-2][moveCol-4] = 'K';
-				    }
-				    else {
-					board[moveRow-2][moveCol-4] = 'K';
-				    }
-				}
-				else if (Action.equals("NO")){
-				}
-				else {
+				    board[moveRow-2][moveCol-4] = 'K';
 				}
 			    }
 			}
@@ -722,16 +698,7 @@ public class board{
 				if (Action.equals("YES")){
 				    board[moveRow][moveCol] = ' ';
 				    board[moveRow-1][moveCol+2] = ' ';
-				    if (moveRow-2 == 0){
-					board[moveRow-2][moveCol+4] = 'K';
-				    }
-				    else {
-					board[moveRow-2][moveCol+4] = 'K';
-				    }
-				}
-				else if (Action.equals("NO")){
-				}
-				else {
+				    board[moveRow-2][moveCol+4] = 'K';
 				}
 			    }
 			}
@@ -743,16 +710,7 @@ public class board{
 				if (Action.equals("YES")){
 				    board[moveRow][moveCol] = ' ';
 				    board[moveRow-1][moveCol-2] = ' ';
-				    if (moveRow-2 == 0){
-					board[moveRow-2][moveCol-4] = 'K';
-				    }
-				    else {
-					board[moveRow-2][moveCol-4] = 'K';
-				    }
-				}
-				else if (Action.equals("NO")){
-				}
-				else {
+				    board[moveRow-2][moveCol-4] = 'K';
 				}
 			    }
 			}
@@ -776,13 +734,8 @@ public class board{
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
-		else if (( board[moveRow][moveCol]==' ') && (board[moveRow + 1][moveCol + 2]=='x')){
-		    if (moveRow == 0){
-			board[moveRow][moveCol] = 'K';
-		    }
-		    else {
-			board[moveRow][moveCol] = 'K';
-		    }
+		else if (board[moveRow + 1][moveCol + 2]=='x'){
+		    board[moveRow][moveCol] = 'K';
 		    board[pieceRow][pieceCol] = ' ';
 		    board[moveRow + 1][moveCol + 2] = ' ';
 		}
@@ -796,16 +749,7 @@ public class board{
 				if (Action.equals("YES")){
 				    board[moveRow][moveCol] = ' ';
 				    board[moveRow-1][moveCol+2] = ' ';
-				    if (moveRow-2 == 0){
-					board[moveRow-2][moveCol+4] = 'K';
-				    }
-				    else {
-					board[moveRow-2][moveCol+4] = 'K';
-				    }
-				}
-				else if (Action.equals("NO")){
-				}
-				else {
+				    board[moveRow-2][moveCol+4] = 'K';
 				}
 			    }
 			}
@@ -819,16 +763,7 @@ public class board{
 				if (Action.equals("YES")){
 				    board[moveRow][moveCol] = ' ';
 				    board[moveRow-1][moveCol-2] = ' ';
-				    if (moveRow-2 == 0){
-					board[moveRow-2][moveCol-4] = 'K';
-				    }
-				    else {
-					board[moveRow-2][moveCol-4] = 'K';
-				    }
-				}
-				else if (Action.equals("NO")){
-				}
-				else {
+				    board[moveRow-2][moveCol-4] = 'K';
 				}
 			    }
 			}
@@ -842,16 +777,7 @@ public class board{
 				if (Action.equals("YES")){
 				    board[moveRow][moveCol] = ' ';
 				    board[moveRow-1][moveCol+2] = ' ';
-				    if (moveRow-2 == 0){
-					board[moveRow-2][moveCol+4] = 'K';
-				    }
-				    else {
-					board[moveRow-2][moveCol+4] = 'K';
-				    }
-				}
-				else if (Action.equals("NO")){
-				}
-				else {
+				    board[moveRow-2][moveCol+4] = 'K';
 				}
 			    }
 			}
@@ -863,20 +789,57 @@ public class board{
 				if (Action.equals("YES")){
 				    board[moveRow][moveCol] = ' ';
 				    board[moveRow-1][moveCol-2] = ' ';
-				    if (moveRow-2 == 0){
-					board[moveRow-2][moveCol-4] = 'K';
-				    }
-				    else {
-					board[moveRow-2][moveCol-4] = 'K';
-				    }
-				}
-				else if (Action.equals("NO")){
-				}
-				else {
+				    board[moveRow-2][moveCol-4] = 'K';
 				}
 			    }
 			}
 		    }
+		}
+	    }
+	    else if (moveRow == pieceRow + 2 && moveCol == pieceCol - 4){
+		if ( board[moveRow][moveCol]=='x'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if ( board[moveRow][moveCol]=='o'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == 'K'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == '$'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow - 1][moveCol + 2]=='x'){
+		    board[moveRow][moveCol] = 'K';
+		    board[pieceRow][pieceCol] = ' ';
+		    board[moveRow - 1][moveCol + 2] = ' ';
+		}
+	    }
+	    else if (moveRow == pieceRow + 2 && moveCol == pieceCol + 4){
+		if ( board[moveRow][moveCol]=='x'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if ( board[moveRow][moveCol]=='o'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == 'K'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow][moveCol] == '$'){
+		    System.out.println ("Illegal move");
+		    choosePieceSpace();
+		}
+		else if (board[moveRow - 1][moveCol - 2]=='x'){
+		    board[moveRow][moveCol] = 'K';
+		    board[pieceRow][pieceCol] = ' ';
+		    board[moveRow - 1][moveCol - 2] = ' ';
 		}
 	    }
 	    //Here we will need to insert 2 other else if statements, which deal with kings moving backwards.  It should be the same as what we have currently, just with + instead of - for rows.
