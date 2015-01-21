@@ -7,3 +7,5 @@ make sure computer doesn't move into danger *CHECK*
 when moving out of danger look to kill the piece threatening it *CHECK*
 graphical presentation of the game
 game over/congratulations message
+
+public static void clrConsole(){System.out.print("\033\143");}
