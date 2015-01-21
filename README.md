@@ -18,4 +18,9 @@ The computer moves based on an AI, which has a prioritized set of situations to 
 
 See if you can beat the computer by taking all of its pieces!  We can't beat the game, and we made it, so either the AI is good, or we are really bad at checkers.  
 
+=====================
+DEVELOPMENT LOG
+DATE | CONTRIBUTOR | WHAT WAS DONE
+==================================
+
 
