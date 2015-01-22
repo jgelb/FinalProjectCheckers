@@ -20,7 +20,6 @@ See if you can beat the computer by taking all of its pieces!  We can't beat the
 
 =====================
 DEVELOPMENT LOG
-DATE | CONTRIBUTOR | WHAT WAS DONE
-==================================
-12.21.14 | Joseph Gelb | This is our initial commit. We just made the header for the README
+Please check the following link:
+https://github.com/jgelb/FinalProjectCheckers/commits/master
 
