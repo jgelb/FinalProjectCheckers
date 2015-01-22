@@ -397,6 +397,29 @@ public class board{
 				else {
 				}
 			    }
+			    else {
+				if (board[moveRow-1][moveCol-2] == 'x'){
+				    if (board[moveRow-2][moveCol-4] == ' '){
+					System.out.println("Do you want to do a double jump? (YES/NO)");
+					Scanner scanner = new Scanner(System.in);
+					String Action = scanner.nextLine();
+					if (Action.equals("YES")){
+					    board[moveRow][moveCol] = ' ';
+					    board[moveRow-1][moveCol-2] = ' ';
+					    if (moveRow-2 == 0){
+						board[moveRow-2][moveCol-4] = 'K';
+					    }
+					    else {
+						board[moveRow-2][moveCol-4] = 'o';
+					    }
+					}
+					else if (Action.equals("NO")){
+					}
+					else {
+					}
+				    }
+				}
+			    }
 			}
 			else if (board[moveRow-1][moveCol-2] == 'x'){
 			    if (board[moveRow-2][moveCol-4] == ' '){
@@ -515,6 +538,29 @@ public class board{
 				else if (Action.equals("NO")){
 				}
 				else {
+				}
+			    }
+			    else {
+				if (board[moveRow-1][moveCol-2] == 'x'){
+				    if (board[moveRow-2][moveCol-4] == ' '){
+					System.out.println("Do you want to do a double jump? (YES/NO)");
+					Scanner scanner = new Scanner(System.in);
+					String Action = scanner.nextLine();
+					if (Action.equals("YES")){
+					    board[moveRow][moveCol] = ' ';
+					    board[moveRow-1][moveCol-2] = ' ';
+					    if (moveRow-2 == 0){
+						board[moveRow-2][moveCol-4] = 'K';
+					    }
+					    else {
+						board[moveRow-2][moveCol-4] = 'o';
+					    }
+					}
+					else if (Action.equals("NO")){
+					}
+					else {
+					}
+				    }
 				}
 			    }
 			}
@@ -702,6 +748,20 @@ public class board{
 				    board[moveRow-2][moveCol+4] = 'K';
 				}
 			    }
+			    else {
+				if (board[moveRow-1][moveCol-2] == 'x'){
+				    if (board[moveRow-2][moveCol-4] == ' '){
+					System.out.println("Do you want to do a double jump? (YES/NO)");
+					Scanner scanner = new Scanner(System.in);
+					String Action = scanner.nextLine();
+					if (Action.equals("YES")){
+					    board[moveRow][moveCol] = ' ';
+					    board[moveRow-1][moveCol-2] = ' ';
+					    board[moveRow-2][moveCol-4] = 'K';
+					}
+				    }
+				}
+			    }
 			}
 			else if (board[moveRow-1][moveCol-2] == 'x'){
 			    if (board[moveRow-2][moveCol-4] == ' '){
@@ -781,6 +841,20 @@ public class board{
 				    board[moveRow-2][moveCol+4] = 'K';
 				}
 			    }
+			    else {
+				if (board[moveRow-1][moveCol-2] == 'x'){
+				    if (board[moveRow-2][moveCol-4] == ' '){
+					System.out.println("Do you want to do a double jump? (YES/NO)");
+					Scanner scanner = new Scanner(System.in);
+					String Action = scanner.nextLine();
+					if (Action.equals("YES")){
+					    board[moveRow][moveCol] = ' ';
+					    board[moveRow-1][moveCol-2] = ' ';
+					    board[moveRow-2][moveCol-4] = 'K';
+					}
+				    }
+				}
+			    }
 			}
 			else if (board[moveRow-1][moveCol-2] == 'x'){
 			    if (board[moveRow-2][moveCol-4] == ' '){
@@ -855,70 +929,87 @@ public class board{
 	boolean blocked = false;
 	for (int i=2;i<board.length-2;i++){
 	    for (int j=3;j<board[0].length-4;j++){
-		if (board[i][j] == 'x') {
+		if (board[i][j] == 'x' || board[i][j] == '$') {
 		    if (board[i + 1][j + 2] == 'o') {
 			if (board[i - 1][j - 2] == ' '){
-			    if (board[i -2][j - 4] == 'x' || board[i-2][j-4] == '$'){
-				blocked = true;
-				board[i-2][j-4] = ' ';
-				board [i -1][j - 2] = 'x';
-				return true;
+			    if (j == 3){
+				if (board[i -2][j] == 'x'){
+				    blocked = true;
+				    board[i-2][j] = ' ';
+				    board [i -1][j -2] = 'x';
+				    return true;
+				}
+				else if (board[i-2][j]=='$'){
+				    blocked = true;
+				    board[i-2][j] = ' ';
+				    board [i -1][j -2] = '$';
+				    return true;
+				}
 			    }
-			    else if (board[i -2][j] == 'x' || board[i-2][j] == '$'){
-				blocked = true;
-				board[i-2][j] = ' ';
-				board [i -1][j -2] = 'x';
-				return true;
+			    else {
+				if (board[i -2][j - 4] == 'x' || board[i-2][j-4] == '$'){
+				    blocked = true;
+				    if (board[i-2][j-4] == 'x'){
+					board [i -1][j - 2] = 'x';
+				    }
+				    else {
+					board [i -1][j - 2] = '$';	
+				    }
+				    board[i-2][j-4] = ' ';
+				    return true;
+				}
+				else if (board[i -2][j] == 'x' || board[i-2][j] == '$'){
+				    blocked = true;
+				    if (board[i-2][j] == 'x'){
+					board [i -1][j + 2] = 'x';
+				    }
+				    else {
+					board [i -1][j + 2] = '$';	
+				    }
+				    board[i-2][j] = ' ';
+				    return true;
+				}
 			    }
 			}
 		    }
 		    else if (board[i + 1][j - 2] == 'o'){
 			if (board[i - 1][j + 2] == ' '){
-			    if (board[i -2][j + 4] == 'x' || board[i-2][j+4] == '$'){
-				blocked = true;
-				board[i-2][j+4] = ' ';
-				board [i -1][j + 2] = 'x';
-				return true;
+			    if (j == 13){
+				if (board[i -2][j] == 'x' || board[i-2][j] == '$'){
+				    blocked = true;
+				    if (board[i-2][j] == 'x'){
+					board[i -1][j +2] = 'x';
+				    }
+				    else {
+					board[i-1][j+2] = '$';
+				    }
+				    board[i-2][j] = ' ';
+				    return true;
+				}
 			    }
-			    else if (board[i -2][j] == 'x' || board[i-2][j-4] == '$'){
-				blocked = true;
-				board[i-2][j] = ' ';
-				board [i -1][j + 2] = 'x';
-				return true;
-			    }
-			}
-		    }
-		}
-		else if (board[i][j] == '$') {
-		    if (board[i + 1][j + 2] == 'o') {
-			if (board[i - 1][j - 2] == ' '){
-			    if (board[i -2][j - 4] == 'x' || board[i-2][j-4] == '$'){
-				blocked = true;
-				board[i-2][j-4] = ' ';
-				board [i -1][j - 2] = '$';
-				return true;
-			    }
-			    else if (board[i -2][j] == 'x' || board[i-2][j] == '$' ){
-				blocked = true;
-				board[i-2][j] = ' ';
-				board [i -1][j -2] = '$';
-				return true;
-			    }
-			}
-		    }
-		    else if (board[i + 1][j - 2] == 'o'){
-			if (board[i - 1][j + 2] == ' '){
-			    if (board[i -2][j + 4] == 'x' || board[i-2][j+4] == '$'){
-				blocked = true;
-				board[i-2][j+4] = ' ';
-				board [i -1][j + 2] = 'x';
-				return true;
-			    }
-			    else if (board[i -2][j] == 'x'|| board[i-2][j] == '$'){
-				blocked = true;
-				board[i-2][j] = ' ';
-				board [i -1][j + 2] = 'x';
-				return true;
+			    else {
+				if (board[i -2][j + 4] == 'x' || board[i-2][j+4] == '$'){
+				    blocked = true;
+				    if (board[i-2][j+4] == 'x'){
+					board[i -1][j +2] = 'x';
+				    }
+				    else {
+					board[i-1][j+2] = '$';
+				    }
+				    board[i-2][j+4] = ' ';
+				    return true;
+				}
+				else if (board[i -2][j] == 'x' || board[i-2][j-4] == '$'){
+				    blocked = true;
+				    if (board[i-2][j] == 'x'){
+					board[i -1][j-2] = 'x';
+				    }
+				    else {
+					board[i-1][j-2] = '$';
+				    }
+				    board[i-2][j] = ' ';
+				    return true;
+				}
 			    }
 			}
 		    }
@@ -941,10 +1032,16 @@ public class board{
 				board[i][j] = ' ';
 				board[i +1][j+2] = ' ';
 				board[i + 2][j+4] = 'x';
+				if (i+2 == 7){
+				    board[i+2][j+4] = '$';
+				}
 			    }
 			    else if (board[i+1][j-2] == ' '){
 				board[i][j] = ' ';
 				board[i+1][j-2] = 'x';
+				if (i+1 == 7){
+				    board[i+1][j-2] = '$';
+				}
 			    }
 			}
 		    }
@@ -955,10 +1052,16 @@ public class board{
 				board[i][j] = ' ';
 				board[i+1][j-2] = ' ';
 				board[i+2][j-4] = 'x';
+				if (i+2 == 7){
+				    board[i+2][j-4] = '$';
+				}
 			    }
 			    else if (board[i+1][j+2] == ' '){
 				board[i][j] = ' ';
 				board[i+1][j+2] = 'x';
+				if (i+1 == 7){
+				    board[i+1][j+2] = '$';
+				}
 			    }
 			}
 		    }
@@ -979,6 +1082,9 @@ public class board{
 				board[i][j] = ' ';
 				board[i+1][j+2] = ' ';
 				board[i+2][j+4] = 'x';
+				if (i+2 == 7){
+				    board[i+2][j+4] = '$';
+				}
 				return true;
 			    }
 			}
@@ -992,6 +1098,9 @@ public class board{
 				board[i][j] = ' ';
 				board[i+1][j-2] = ' ';
 				board[i+2][j-4] = 'x';
+				if (i+2 == 7){
+				    board[i+2][j-4] = '$';
+				}
 				return true;
 			    }
 			}
@@ -1006,6 +1115,9 @@ public class board{
 				    board[i][j] = ' ';
 				    board[i+1][j+2] = ' ';
 				    board[i+2][j+4] = 'x';
+				    if (i+2 == 7){
+					board[i+2][j+4] = '$';
+				    }
 				    return true;
 				}
 			    }
@@ -1017,6 +1129,9 @@ public class board{
 				    board[i][j] = ' ';
 				    board[i+1][j-2] = ' ';
 				    board[i+2][j-4] = 'x';
+				    if (i+2 == 7){
+					board[i+2][j-4] = '$';
+				    }
 				    return true;
 				}
 			    }
@@ -1035,6 +1150,9 @@ public class board{
 		    moved = true;
 		    board[i][3] = ' ';
 		    board[i+1][1] = 'x';
+		    if (i+1 == 7){
+			board[i+1][1] = '$';
+		    }
 		    return true;
 		}
 	    }
@@ -1043,6 +1161,9 @@ public class board{
 		    moved = true;
 		    board[i][13] = ' ';
 		    board[i+1][15] = 'x';
+		    if (i+1 == 7){
+			board[i+1][15] = '$';
+		    }
 		    return true;
 		}
 	    }
@@ -1062,12 +1183,18 @@ public class board{
 				    if (board[i][j+4] == 'x'){
 					board[i][j] = ' ';
 					board[i+1][j+2] = 'x';
+					if (i+1 == 7){
+					    board[i+1][j+2] = '$';
+					}
 					return true;
 				    }
 				}
 				else {
 				    board[i][j] = ' ';
 				    board[i+1][j+2] = 'x';
+				    if (i+1 == 7){
+					board[i+1][j+2] = '$';
+				    }
 				    return true;
 				}
 			    }
@@ -1080,12 +1207,18 @@ public class board{
 				    if (board[i][j-4] == 'x'){
 					board[i][j] = ' ';
 					board[i+1][j-2] = 'x';
+					if (i+1 == 7){
+					    board[i+1][j-2] = '$';
+					}
 					return true;
 				    }
 				}
 				else {
 				    board[i][j] = ' ';
 				    board[i+1][j-2] = 'x';
+				    if (i+1 == 7){
+					board[i+1][j-2] = '$';
+				    }
 				    return true;
 				}
 			    }
@@ -1098,12 +1231,18 @@ public class board{
 				    if (board[i][j+4] == 'x'){
 					board[i][j] = ' ';
 					board[i+1][j+2] = 'x';
+					if (i+1 == 7){
+					    board[i+1][j+2] = '$';
+					}
 					return true;
 				    }
 				}
 				else {
 				    board[i][j] = ' ';
 				    board[i+1][j+2] = 'x';
+				    if (i+1 == 7){
+					board[i+1][j+2] = '$';
+				    }
 				    return true;
 				}
 			    }
@@ -1114,12 +1253,18 @@ public class board{
 				    if (board[i][j-4] == 'x'){
 					board[i][j] = ' ';
 					board[i+1][j-2] = 'x';
+					if (i+1 == 7){
+					    board[i+1][j-2] = '$';
+					}
 					return true;
 				    }
 				}
 				else {
 				    board[i][j] = ' ';
 				    board[i+1][j-2] = 'x';
+				    if (i+1 == 7){
+					board[i+1][j-2] = '$';
+				    }
 				    return true;
 				}
 			    }
@@ -1142,6 +1287,9 @@ public class board{
 				moved = true;
 				board[i][j] = ' ';
 				board[i+1][j+2] = 'x';
+				if (i+1 == 7){
+				    board[i+1][j+2] = '$';
+				}
 				return;
 			    }
 			}
@@ -1152,6 +1300,9 @@ public class board{
 				moved = true;
 				board[i][j] = ' ';
 				board[i+1][j-2] = 'x';
+				if (i+1 == 7){
+				    board[i+1][j-2] = '$';
+				}
 				return;
 			    }
 			}
@@ -1162,6 +1313,9 @@ public class board{
 				moved = true;
 				board[i][j] = ' ';
 				board[i+1][j+2] = 'x';
+				if (i+1 == 7){
+				    board[i+1][j+2] = '$';
+				}
 				return;
 			    }
 			}
@@ -1170,6 +1324,9 @@ public class board{
 				moved = true;
 				board[i][j] = ' ';
 				board[i+1][j-2] = 'x';
+				if (i+1 == 7){
+				    board[i+1][j-2] = '$';
+				}
 				return;
 			    }
 			}
