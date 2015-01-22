@@ -240,6 +240,7 @@ public class board{
 	}
 	chooseMoveSpace();
     }
+    
     public void doMove(){
 	//Here will be code for all of the possible move options
 	//Basic moves for regular piece
@@ -1204,6 +1205,8 @@ public class board{
 	//moveEdge
 	//randomMove
     }
+
+
     public void Gameover(){
 	//tests to see if the game is over
 	int counterEnemy = 0;
@@ -1226,6 +1229,8 @@ public class board{
 	    gameOver = 2;
 	}
     }
+
+
     public static void main(String[] args){
 	board x = new board();
 	System.out.println(x);
@@ -1233,6 +1238,9 @@ public class board{
 	    x.choosePieceSpace();
 	    x.doMove();
 	    x.Gameover();
+	    if (x.gameOver == 2){
+		break;
+	    }
 	    System.out.println(x);
 	    x.computerMove();
 	    x.Gameover();
