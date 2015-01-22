@@ -20,6 +20,7 @@ See if you can beat the computer by taking all of its pieces!  We can't beat the
 
 =====================
 DEVELOPMENT LOG
+=====================
 Please check the following link:
 https://github.com/jgelb/FinalProjectCheckers/commits/master
 
