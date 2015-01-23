@@ -1017,7 +1017,7 @@ public class board{
 	}
 	return false;
     }
-    //I stopped working on kings here. We will continue tomorrow.
+    
     public boolean escape(){ //IF CAN ESCAPE BY KILLING; KILL
 	boolean escaped = false;
 	for (int i=1;i<board.length-2;i++){
@@ -1097,6 +1097,7 @@ public class board{
 			if (board[i+1][j+2] == 'o'){
 			    if (board[i+2][j+4] == ' '){
 				attacked = true;
+				
 				board[i][j] = ' ';
 				board[i+1][j+2] = ' ';
 				board[i+2][j+4] = 'x';
@@ -1123,6 +1124,7 @@ public class board{
 			    if (board[i+1][j+2] == 'o'){
 				if (board[i+2][j+4] == ' '){
 				    attacked = true;
+				    
 				    board[i][j] = ' ';
 				    board[i+1][j+2] = ' ';
 				    board[i+2][j+4] = '$';
@@ -1137,6 +1139,7 @@ public class board{
 			if (board[i+1][j-2] == 'o'){
 			    if (board[i+2][j-4] == ' '){
 				attacked = true;
+				
 				board[i][j] = ' ';
 				board[i+1][j-2] = ' ';
 				board[i+2][j-4] = 'x';
@@ -1163,6 +1166,7 @@ public class board{
 			    if (board[i+1][j-2] == 'o'){
 				if (board[i+2][j-4] == ' '){
 				    attacked = true;
+				   
 				    board[i][j] = ' ';
 				    board[i+1][j-2] = ' ';
 				    board[i+2][j-4] = '$';
@@ -1178,6 +1182,7 @@ public class board{
 			    if (j+4 < 16){
 				if (board[i+2][j+4] == ' '){
 				    attacked = true;
+				    
 				    board[i][j] = ' ';
 				    board[i+1][j+2] = ' ';
 				    board[i+2][j+4] = 'x';
@@ -1192,6 +1197,7 @@ public class board{
 			    if (j-4 >= 1){
 				if (board[i+2][j-4] == ' '){
 				    attacked = true;
+				    
 				    board[i][j] = ' ';
 				    board[i+1][j-2] = ' ';
 				    board[i+2][j-4] = 'x';
@@ -1208,6 +1214,7 @@ public class board{
 			    if (board[i-1][j+2] == 'o'){
 				if (board[i-2][j+4] == ' '){
 				    attacked = true;
+				    
 				    board[i][j] = ' ';
 				    board[i-1][j+2] = ' ';
 				    board[i-2][j+4] = '$';
@@ -1228,6 +1235,7 @@ public class board{
 			    if (board[i+1][j+2] == 'o'){
 				if (board[i+2][j+4] == ' '){
 				    attacked = true;
+				   
 				    board[i][j] = ' ';
 				    board[i+1][j+2] = ' ';
 				    board[i+2][j+4] = '$';
@@ -1237,6 +1245,7 @@ public class board{
 			    else if (board[i+1][j-2] == 'o'){
 				if (board[i+2][j-4] == ' '){
 				    attacked = true;
+				    
 				    board[i][j] = ' ';
 				    board[i+1][j-2] = ' ';
 				    board[i+2][j-4] = '$';
@@ -1786,8 +1795,19 @@ public class board{
 	try{ Thread.sleep(n);
 	} catch (Exception e) {}
     }
+    public static void clrConsole(){System.out.print("\033");}
+
     public static void main(String[] args){
 	board x = new board();
+	System.out.println("\nWelcome to Checkers!!");
+	x.Waitaminute(4000);
+	System.out.println("\nFollow the on-screen instructions to play");
+	x.Waitaminute(4000);
+	System.out.println("\nBe sure to type in the EXACT format in which you are prompted");
+	x.Waitaminute(4000);
+	System.out.println("\nGood Luck!!");
+	x.Waitaminute(5000);
+        
 	System.out.println(x);
 	while (x.gameOver == 0){
 	    x.choosePieceSpace();
@@ -1796,7 +1816,7 @@ public class board{
 	    if (x.gameOver == 2){
 		break;
 	    }
-	    System.out.println("Your move: ");
+	    System.out.println("\nYour move: ");
 	    System.out.println(x);
 	    x.computerMove();
 	    x.Gameover();
@@ -1804,6 +1824,7 @@ public class board{
 	    System.out.println("The computer is preparing its move: ");
 	    x.Waitaminute(3500);
 	    System.out.println(x);
+	    x.Waitaminute(3000);
 
 	    
 	}
