@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 import java.util.Scanner;
-public class board{
+public class driver{
     private char[][] board = new char[9][18];
     public int moveRow = 0;
     public int moveCol = 0;
@@ -9,7 +9,7 @@ public class board{
     public int pieceCol = 0;
     public int gameOver = 0;
     //To set up the board----------------------------------------------------
-    public board(){
+    public driver(){
 	int k = 1;
 	for (int i=0;i<board.length;i++){
 	    for (int j=0;j<board[0].length;j++){
