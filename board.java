@@ -1398,7 +1398,7 @@ public class board{
 		
 		else if (board[i][j] == '$'){
 		    if (j == 1){
-			if (i == 16){
+			if (i == 7){
 			    if (board[i-1][j+2] == ' '){
 				if (board[i-2][j+4] != 'o'){
 				    if (board[i-2][j] == 'o'){
@@ -1450,7 +1450,7 @@ public class board{
 			}
 		    }
 		    else if (j == 15){
-		        if (i == 16){
+		        if (i == 7){
 			    if (board[i-1][j-2] == ' '){
 				if (board[i-2][j-4] != 'o'){
 				    if (board[i-2][j] == 'o'){
@@ -1502,7 +1502,7 @@ public class board{
 			}
 		    }
 		    else{
-			if (i == 16){
+			if (i == 7){
 			    if (board[i-1][j-2] == ' '){
 				if (board[i-2][j-4] != 'o'){
 				    if (board[i-2][j] == 'o'){
