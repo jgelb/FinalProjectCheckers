@@ -257,7 +257,7 @@ public class driver{
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
-		else if (board[moveRow][moveCol] == '$'){
+		else if (board[moveRow][moveCol] == '@'){
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
@@ -285,7 +285,7 @@ public class driver{
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
-		else if (board[moveRow][moveCol] == '$'){
+		else if (board[moveRow][moveCol] == '@'){
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
@@ -314,7 +314,7 @@ public class driver{
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
-		else if (board[moveRow][moveCol] == '$'){
+		else if (board[moveRow][moveCol] == '@'){
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
@@ -457,7 +457,7 @@ public class driver{
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
-		else if (board[moveRow][moveCol] == '$'){
+		else if (board[moveRow][moveCol] == '@'){
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
@@ -608,7 +608,7 @@ public class driver{
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
-		else if (board[moveRow][moveCol] == '$'){
+		else if (board[moveRow][moveCol] == '@'){
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
@@ -630,7 +630,7 @@ public class driver{
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
-		else if (board[moveRow][moveCol] == '$'){
+		else if (board[moveRow][moveCol] == '@'){
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
@@ -652,7 +652,7 @@ public class driver{
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
-		else if (board[moveRow][moveCol] == '$'){
+		else if (board[moveRow][moveCol] == '@'){
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
@@ -674,7 +674,7 @@ public class driver{
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
-		else if (board[moveRow][moveCol] == '$'){
+		else if (board[moveRow][moveCol] == '@'){
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
@@ -697,7 +697,7 @@ public class driver{
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
-		else if (board[moveRow][moveCol] == '$'){
+		else if (board[moveRow][moveCol] == '@'){
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
@@ -790,7 +790,7 @@ public class driver{
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
-		else if (board[moveRow][moveCol] == '$'){
+		else if (board[moveRow][moveCol] == '@'){
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
@@ -883,7 +883,7 @@ public class driver{
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
-		else if (board[moveRow][moveCol] == '$'){
+		else if (board[moveRow][moveCol] == '@'){
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
@@ -906,7 +906,7 @@ public class driver{
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
-		else if (board[moveRow][moveCol] == '$'){
+		else if (board[moveRow][moveCol] == '@'){
 		    System.out.println ("Illegal move");
 		    choosePieceSpace();
 		}
@@ -938,32 +938,32 @@ public class driver{
 				    board[i-2][j] = ' ';
 				    return true;
 				}
-				else if (board[i-2][j]=='$'){
+				else if (board[i-2][j]=='@'){
 				    blocked = true;
 				    board[i-2][j] = ' ';
-				    board [i -1][j -2] = '$';
+				    board [i -1][j -2] = '@';
 				    return true;
 				}
 			    }
 			    else {
-				if (board[i -2][j - 4] == 'x' || board[i-2][j-4] == '$'){
+				if (board[i -2][j - 4] == 'x' || board[i-2][j-4] == '@'){
 				    blocked = true;
 				    if (board[i-2][j-4] == 'x'){
 					board [i -1][j - 2] = 'x';
 				    }
 				    else {
-					board [i -1][j - 2] = '$';
+					board [i -1][j - 2] = '@';
 				    }
 				    board[i-2][j-4] = ' ';
 				    return true;
 				}
-				else if (board[i -2][j] == 'x' || board[i-2][j] == '$'){
+				else if (board[i -2][j] == 'x' || board[i-2][j] == '@'){
 				    blocked = true;
 				    if (board[i-2][j] == 'x'){
 					board [i -1][j + 2] = 'x';
 				    }
 				    else {
-					board [i -1][j + 2] = '$';
+					board [i -1][j + 2] = '@';
 				    }
 				    board[i-2][j] = ' ';
 				    return true;
@@ -974,37 +974,37 @@ public class driver{
 		    else if (board[i + 1][j - 2] == 'o'){
 			if (board[i - 1][j + 2] == ' '){
 			    if (j == 13){
-				if (board[i -2][j] == 'x' || board[i-2][j] == '$'){
+				if (board[i -2][j] == 'x' || board[i-2][j] == '@'){
 				    blocked = true;
 				    if (board[i-2][j] == 'x'){
 					board[i -1][j +2] = 'x';
 				    }
 				    else {
-					board[i-1][j+2] = '$';
+					board[i-1][j+2] = '@';
 				    }
 				    board[i-2][j] = ' ';
 				    return true;
 				}
 			    }
 			    else {
-				if (board[i -2][j + 4] == 'x' || board[i-2][j+4] == '$'){
+				if (board[i -2][j + 4] == 'x' || board[i-2][j+4] == '@'){
 				    blocked = true;
 				    if (board[i-2][j+4] == 'x'){
 					board[i -1][j +2] = 'x';
 				    }
 				    else {
-					board[i-1][j+2] = '$';
+					board[i-1][j+2] = '@';
 				    }
 				    board[i-2][j+4] = ' ';
 				    return true;
 				}
-				else if (board[i -2][j] == 'x' || board[i-2][j-4] == '$'){
+				else if (board[i -2][j] == 'x' || board[i-2][j-4] == '@'){
 				    blocked = true;
 				    if (board[i-2][j] == 'x'){
 					board[i -1][j-2] = 'x';
 				    }
 				    else {
-					board[i-1][j-2] = '$';
+					board[i-1][j-2] = '@';
 				    }
 				    board[i-2][j] = ' ';
 				    return true;
@@ -1022,7 +1022,7 @@ public class driver{
 	boolean escaped = false;
 	for (int i=1;i<board.length-2;i++){
 	    for (int j=3;j<board[0].length-4;j++){
-		if (board[i][j] == 'x' || board[i][j] == '$') {
+		if (board[i][j] == 'x' || board[i][j] == '@') {
 		    if (board[i + 1][j + 2] == 'o') {
 			if (board[i - 1][j - 2] == ' '){ //IN DANGER
 			    if (board[i+2][j+4] == ' '){
@@ -1031,12 +1031,12 @@ public class driver{
 				    board[i+2][j+4] = 'x';
 				}
 				else {
-				    board[i+2][j+4] = '$';
+				    board[i+2][j+4] = '@';
 				}
 				board[i][j] = ' ';
 				board[i +1][j+2] = ' ';
 				if (i+2 == 7){
-				    board[i+2][j+4] = '$';
+				    board[i+2][j+4] = '@';
 				}
 			    }
 			    else if (board[i+1][j-2] == ' '){
@@ -1044,11 +1044,11 @@ public class driver{
 				    board[i+1][j-2] = 'x';
 				}
 				else {
-				    board[i+1][j-2] = '$';
+				    board[i+1][j-2] = '@';
 				}
 				board[i][j] = ' ';
 				if (i+1 == 7){
-				    board[i+1][j-2] = '$';
+				    board[i+1][j-2] = '@';
 				}
 			    }
 			}
@@ -1061,12 +1061,12 @@ public class driver{
 				    board[i+2][j-4] = 'x';
 				}
 				else {
-				    board[i+2][j-4] = '$';
+				    board[i+2][j-4] = '@';
 				}
 				board[i][j] = ' ';
 				board[i+1][j-2] = ' ';
 				if (i+2 == 7){
-				    board[i+2][j-4] = '$';
+				    board[i+2][j-4] = '@';
 				}
 			    }
 			    else if (board[i+1][j+2] == ' '){
@@ -1074,11 +1074,11 @@ public class driver{
 				    board[i+1][j+2] = 'x';
 				}
 				else {
-				    board[i+1][j+2] = '$';
+				    board[i+1][j+2] = '@';
 				}
 				board[i][j] = ' ';
 				if (i+1 == 7){
-				    board[i+1][j+2] = '$';
+				    board[i+1][j+2] = '@';
 				}
 			    }
 			}
@@ -1102,20 +1102,20 @@ public class driver{
 				board[i+1][j+2] = ' ';
 				board[i+2][j+4] = 'x';
 				if (i+2 == 7){
-				    board[i+2][j+4] = '$';
+				    board[i+2][j+4] = '@';
 				}
 				return true;
 			    }
 			}
 		    }
-		    else if (board[i][j] == '$'){
+		    else if (board[i][j] == '@'){
 			if (i >= 2){
 			    if (board[i-1][j+2] == 'o'){
 				if (board[i-2][j+4] == ' '){
 				    attacked = true;
 				    board[i][j] = ' ';
 				    board[i-1][j+2] = ' ';
-				    board[i-2][j+4] = '$';
+				    board[i-2][j+4] = '@';
 				    return true;
 				}
 			    }
@@ -1127,7 +1127,7 @@ public class driver{
 				    
 				    board[i][j] = ' ';
 				    board[i+1][j+2] = ' ';
-				    board[i+2][j+4] = '$';
+				    board[i+2][j+4] = '@';
 				    return true;
 				}
 			    }
@@ -1144,20 +1144,20 @@ public class driver{
 				board[i+1][j-2] = ' ';
 				board[i+2][j-4] = 'x';
 				if (i+2 == 7){
-				    board[i+2][j-4] = '$';
+				    board[i+2][j-4] = '@';
 				}
 				return true;
 			    }
 			}
 		    }
-		    else if (board[i][j] == '$'){
+		    else if (board[i][j] == '@'){
 			if (i >= 2){
 			    if (board[i-1][j-2] == 'o'){
 				if (board[i-2][j-4] == ' '){
 				    attacked = true;
 				    board[i][j] = ' ';
 				    board[i-1][j-2] = ' ';
-				    board[i-2][j-4] = '$';
+				    board[i-2][j-4] = '@';
 				    return true;
 				}
 			    }
@@ -1169,7 +1169,7 @@ public class driver{
 				   
 				    board[i][j] = ' ';
 				    board[i+1][j-2] = ' ';
-				    board[i+2][j-4] = '$';
+				    board[i+2][j-4] = '@';
 				    return true;
 				}
 			    }
@@ -1187,7 +1187,7 @@ public class driver{
 				    board[i+1][j+2] = ' ';
 				    board[i+2][j+4] = 'x';
 				    if (i+2 == 7){
-					board[i+2][j+4] = '$';
+					board[i+2][j+4] = '@';
 				    }
 				    return true;
 				}
@@ -1202,22 +1202,21 @@ public class driver{
 				    board[i+1][j-2] = ' ';
 				    board[i+2][j-4] = 'x';
 				    if (i+2 == 7){
-					board[i+2][j-4] = '$';
+					board[i+2][j-4] = '@';
 				    }
 				    return true;
 				}
 			    }
 			}
 		    }
-		    else if (board[i][j] == '$'){
+		    else if (board[i][j] == '@'){
 			if (i >= 2){
 			    if (board[i-1][j+2] == 'o'){
 				if (board[i-2][j+4] == ' '){
 				    attacked = true;
-				    
 				    board[i][j] = ' ';
 				    board[i-1][j+2] = ' ';
-				    board[i-2][j+4] = '$';
+				    board[i-2][j+4] = '@';
 				    return true;
 				}
 			    }
@@ -1226,7 +1225,27 @@ public class driver{
 				    attacked = true;
 				    board[i][j] = ' ';
 				    board[i-1][j-2] = ' ';
-				    board[i-2][j-4] = '$';
+				    board[i-2][j-4] = '@';
+				    return true;
+				}
+			    }
+			    else if (board[i+1][j+2] == 'o'){
+				if (board[i+2][j+4] == ' '){
+				    attacked = true;
+				   
+				    board[i][j] = ' ';
+				    board[i+1][j+2] = ' ';
+				    board[i+2][j+4] = '@';
+				    return true;
+				}
+			    }
+			    else if (board[i+1][j-2] == 'o'){
+				if (board[i+2][j-4] == ' '){
+				    attacked = true;
+				    
+				    board[i][j] = ' ';
+				    board[i+1][j-2] = ' ';
+				    board[i+2][j-4] = '@';
 				    return true;
 				}
 			    }
@@ -1238,7 +1257,7 @@ public class driver{
 				   
 				    board[i][j] = ' ';
 				    board[i+1][j+2] = ' ';
-				    board[i+2][j+4] = '$';
+				    board[i+2][j+4] = '@';
 				    return true;
 				}
 			    }
@@ -1248,7 +1267,7 @@ public class driver{
 				    
 				    board[i][j] = ' ';
 				    board[i+1][j-2] = ' ';
-				    board[i+2][j-4] = '$';
+				    board[i+2][j-4] = '@';
 				    return true;
 				}
 			    }
@@ -1262,34 +1281,34 @@ public class driver{
     public boolean moveEdge(){
 	boolean moved = false;
 	for (int i=0;i<board.length;i++){
-	    if (board[i][3] == 'x' || board[i][3] == '$'){
+	    if (board[i][3] == 'x' || board[i][3] == '@'){
 		if (board[i+1][1] == ' '){
 		    moved = true;
 		    if (board[i][3] == 'x'){
 			board[i+1][1] = 'x';
 		    }
 		    else{
-			board[i+1][1] = '$';
+			board[i+1][1] = '@';
 		    }
 		    board[i][3] = ' ';
 		    if (i+1 == 7){
-			board[i+1][1] = '$';
+			board[i+1][1] = '@';
 		    }
 		    return true;
 		}
 	    }
-	    else if (board[i][13] == 'x' || board[i][13] == '$'){
+	    else if (board[i][13] == 'x' || board[i][13] == '@'){
 		if (board[i+1][15] == ' '){
 		    moved = true;
 		    if (board[i][13] == 'x'){
 			board[i+1][15] = 'x';
 		    }
 		    else {
-			board[i+1][15] = '$';
+			board[i+1][15] = '@';
 		    }
 		    board[i][13] = ' ';
 		    if (i+1 == 7){
-			board[i+1][15] = '$';
+			board[i+1][15] = '@';
 		    }
 		    return true;
 		}
@@ -1311,7 +1330,7 @@ public class driver{
 					board[i][j] = ' ';
 					board[i+1][j+2] = 'x';
 					if (i+1 == 7){
-					    board[i+1][j+2] = '$';
+					    board[i+1][j+2] = '@';
 					}
 					return true;
 				    }
@@ -1320,7 +1339,7 @@ public class driver{
 				    board[i][j] = ' ';
 				    board[i+1][j+2] = 'x';
 				    if (i+1 == 7){
-					board[i+1][j+2] = '$';
+					board[i+1][j+2] = '@';
 				    }
 				    return true;
 				}
@@ -1335,7 +1354,7 @@ public class driver{
 					board[i][j] = ' ';
 					board[i+1][j-2] = 'x';
 					if (i+1 == 7){
-					    board[i+1][j-2] = '$';
+					    board[i+1][j-2] = '@';
 					}
 					return true;
 				    }
@@ -1344,7 +1363,7 @@ public class driver{
 				    board[i][j] = ' ';
 				    board[i+1][j-2] = 'x';
 				    if (i+1 == 7){
-					board[i+1][j-2] = '$';
+					board[i+1][j-2] = '@';
 				    }
 				    return true;
 				}
@@ -1359,7 +1378,7 @@ public class driver{
 					board[i][j] = ' ';
 					board[i+1][j+2] = 'x';
 					if (i+1 == 7){
-					    board[i+1][j+2] = '$';
+					    board[i+1][j+2] = '@';
 					}
 					return true;
 				    }
@@ -1368,7 +1387,7 @@ public class driver{
 				    board[i][j] = ' ';
 				    board[i+1][j+2] = 'x';
 				    if (i+1 == 7){
-					board[i+1][j+2] = '$';
+					board[i+1][j+2] = '@';
 				    }
 				    return true;
 				}
@@ -1381,7 +1400,7 @@ public class driver{
 					board[i][j] = ' ';
 					board[i+1][j-2] = 'x';
 					if (i+1 == 7){
-					    board[i+1][j-2] = '$';
+					    board[i+1][j-2] = '@';
 					}
 					return true;
 				    }
@@ -1390,211 +1409,9 @@ public class driver{
 				    board[i][j] = ' ';
 				    board[i+1][j-2] = 'x';
 				    if (i+1 == 7){
-					board[i+1][j-2] = '$';
+					board[i+1][j-2] = '@';
 				    }
 				    return true;
-				}
-			    }
-			}
-		    }
-		}
-		else if (board[i][j] == '$'){
-		    if (j == 1){
-			if (i == 7){
-			    if (board[i-1][j+2] == ' '){
-				if (board[i-2][j+4] != 'o'){
-				    if (board[i-2][j] == 'o'){
-					if (board[i][j+4] == 'x'){
-					    board[i][j] = ' ';
-					    board[i-1][j+2] = '$';
-					    return true;
-					}
-				    }
-				}
-			    }
-			}
-			else if (i == 1){
-			    if (board[i+1][j+2] == ' '){
-				if (board[i+2][j+4] != 'o'){
-				    if (board[i+2][j] == 'o'){
-					if (board[i][j+4] == 'x'){
-					    board[i][j] = ' ';
-					    board[i+1][j+2] = '$';
-					    return true;
-					}
-				    }
-				}
-			    }
-			}
-			else{
-			    if (board[i+1][j+2] == ' '){
-				if (board[i+2][j+4] != 'o'){
-				    if (board[i+2][j] == 'o'){
-					if (board[i][j+4] == 'x'){
-					    board[i][j] = ' ';
-					    board[i+1][j+2] = '$';
-					    return true;
-					}
-				    }
-				}
-			    }
-			    else if (board[i-1][j+2] == ' '){
-				if (board[i-2][j+4] != 'o'){
-				    if (board[i-2][j] == 'o'){
-					if (board[i][j+4] == 'x'){
-					    board[i][j] = ' ';
-					    board[i-1][j+2] = '$';
-					    return true;
-					}
-				    }
-				}
-			    }
-			}
-		    }
-		    else if (j == 15){
-			if (i == 7){
-			    if (board[i-1][j-2] == ' '){
-				if (board[i-2][j-4] != 'o'){
-				    if (board[i-2][j] == 'o'){
-					if (board[i][j-4] == 'x'){
-					    board[i][j] = ' ';
-					    board[i-1][j-2] = '$';
-					    return true;
-					}
-				    }
-				}
-			    }
-			}
-			else if (i == 1){
-			    if (board[i+1][j-2] == ' '){
-				if (board[i+2][j-4] != 'o'){
-				    if (board[i+2][j] == 'o'){
-					if (board[i][j-4] == 'x'){
-					    board[i][j] = ' ';
-					    board[i+1][j-2] = '$';
-					    return true;
-					}
-				    }
-				}
-			    }
-			}
-			else{
-			    if (board[i+1][j-2] == ' '){
-				if (board[i+2][j-4] != 'o'){
-				    if (board[i+2][j] == 'o'){
-					if (board[i][j-4] == 'x'){
-					    board[i][j] = ' ';
-					    board[i+1][j-2] = '$';
-					    return true;
-					}
-				    }
-				}
-			    }
-			    else if (board[i-1][j-2] == ' '){
-				if (board[i-2][j-4] != 'o'){
-				    if (board[i-2][j] == 'o'){
-					if (board[i][j-4] == 'x'){
-					    board[i][j] = ' ';
-					    board[i-1][j-2] = '$';
-					    return true;
-					}
-				    }
-				}
-			    }
-			}
-		    }
-		    else{
-			if (i == 7){
-			    if (board[i-1][j-2] == ' '){
-				if (board[i-2][j-4] != 'o'){
-				    if (board[i-2][j] == 'o'){
-					if (board[i][j-4] == 'x'){
-					    board[i][j] = ' ';
-					    board[i-1][j-2] = '$';
-					    return true;
-					}
-				    }
-				}
-			    }
-			    else if (board[i-1][j+2] == ' '){
-				if (board[i-2][j+4] != 'o'){
-				    if (board[i-2][j] == 'o'){
-					if (board[i][j+4] == 'x'){
-					    board[i][j] = ' ';
-					    board[i-1][j+2] = '$';
-					    return true;
-					}
-				    }
-				}
-			    }
-			}
-			else if (i == 1){
-			    if (board[i+1][j-2] == ' '){
-				if (board[i+2][j-4] != 'o'){
-				    if (board[i+2][j] == 'o'){
-					if (board[i][j-4] == 'x'){
-					    board[i][j] = ' ';
-					    board[i+1][j-2] = '$';
-					    return true;
-					}
-				    }
-				}
-			    }
-			    else if (board[i+1][j+2] == ' '){
-				if (board[i+2][j+4] != 'o'){
-				    if (board[i+2][j] == 'o'){
-					if (board[i][j+4] == 'x'){
-					    board[i][j] = ' ';
-					    board[i+1][j+2] = '$';
-					    return true;
-					}
-				    }
-				}
-			    }
-			}
-			else {
-			    if (board[i+1][j-2] == ' '){
-				if (board[i+2][j-4] != 'o'){
-				    if (board[i+2][j] == 'o'){
-					if (board[i][j-4] == 'x'){
-					    board[i][j] = ' ';
-					    board[i+1][j-2] = '$';
-					    return true;
-					}
-				    }
-				}
-			    }
-			    else if (board[i-1][j-2] == ' '){
-				if (board[i-2][j-4] != 'o'){
-				    if (board[i-2][j] == 'o'){
-					if (board[i][j-4] == 'x'){
-					    board[i][j] = ' ';
-					    board[i-1][j-2] = '$';
-					    return true;
-					}
-				    }
-				}
-			    }
-			    else if (board[i-1][j+2] == ' '){
-				if (board[i-2][j+4] != 'o'){
-				    if (board[i+2][j] == 'o'){
-					if (board[i][j+4] == 'x'){
-					    board[i][j] = ' ';
-					    board[i-1][j+2] = '$';
-					    return true;
-					}
-				    }
-				}
-			    }
-			    else if (board[i+1][j+2] == ' '){
-				if (board[i+2][j+4] != 'o'){
-				    if (board[i+2][j] == 'o'){
-					if (board[i][j+4] == 'x'){
-					    board[i][j] = ' ';
-					    board[i+1][j+2] = '$';
-					    return true;
-					}
-				    }
 				}
 			    }
 			}
@@ -1617,7 +1434,7 @@ public class driver{
 				board[i][j] = ' ';
 				board[i+1][j+2] = 'x';
 				if (i+1 == 7){
-				    board[i+1][j+2] = '$';
+				    board[i+1][j+2] = '@';
 				}
 				return;
 			    }
@@ -1630,7 +1447,7 @@ public class driver{
 				board[i][j] = ' ';
 				board[i+1][j-2] = 'x';
 				if (i+1 == 7){
-				    board[i+1][j-2] = '$';
+				    board[i+1][j-2] = '@';
 				}
 				return;
 			    }
@@ -1643,7 +1460,7 @@ public class driver{
 				board[i][j] = ' ';
 				board[i+1][j+2] = 'x';
 				if (i+1 == 7){
-				    board[i+1][j+2] = '$';
+				    board[i+1][j+2] = '@';
 				}
 				return;
 			    }
@@ -1654,20 +1471,20 @@ public class driver{
 				board[i][j] = ' ';
 				board[i+1][j-2] = 'x';
 				if (i+1 == 7){
-				    board[i+1][j-2] = '$';
+				    board[i+1][j-2] = '@';
 				}
 				return;
 			    }
 			}
 		    }
 		}
-		else if (board[i][j] == '$'){
+		else if (board[i][j] == '@'){
 		    if (j == 1){
 			if (board[i+1][j+2] == ' '){
 			    if (r.nextInt(2) == 0){
 				moved = true;
 				board[i][j] = ' ';
-				board[i+1][j+2] = '$';
+				board[i+1][j+2] = '@';
 				return;
 			    }
 			}
@@ -1676,7 +1493,7 @@ public class driver{
 				if (r.nextInt(2) == 0){
 				    moved = true;
 				    board[i][j] = ' ';
-				    board[i+1][j+2] = '$';
+				    board[i+1][j+2] = '@';
 				    return;
 				}
 			    }
@@ -1689,7 +1506,7 @@ public class driver{
 				board[i][j] = ' ';
 				board[i+1][j-2] = 'x';
 				if (i+1 == 7){
-				    board[i+1][j-2] = '$';
+				    board[i+1][j-2] = '@';
 				}
 				return;
 			    }
@@ -1699,7 +1516,7 @@ public class driver{
 				if (r.nextInt(2) == 0){
 				    moved = true;
 				    board[i][j] = ' ';
-				    board[i+1][j-2] = '$';
+				    board[i+1][j-2] = '@';
 				    return;
 				}
 			    }
@@ -1710,7 +1527,7 @@ public class driver{
 			    if (r.nextInt(2) == 0){
 				moved = true;
 				board[i][j] = ' ';
-				board[i+1][j+2] = '$';
+				board[i+1][j+2] = '@';
 				return;
 			    }
 			}
@@ -1718,7 +1535,7 @@ public class driver{
 			    if (r.nextInt(2) == 0){
 				moved = true;
 				board[i][j] = ' ';
-				board[i-1][j+2] = '$';
+				board[i-1][j+2] = '@';
 				return;
 			    }
 			}
@@ -1726,7 +1543,7 @@ public class driver{
 			    if (r.nextInt(2) == 0){
 				moved = true;
 				board[i][j] = ' ';
-				board[i+1][j-2] = '$';
+				board[i+1][j-2] = '@';
 				return;
 			    }
 			}
@@ -1734,7 +1551,7 @@ public class driver{
 			    if (r.nextInt(2) == 0){
 				moved = true;
 				board[i][j] = ' ';
-				board[i-1][j-2] = '$';
+				board[i-1][j-2] = '@';
 				return;
 			    }
 			}
@@ -1776,7 +1593,7 @@ public class driver{
 	int counterOwn = 0;
 	for (int i=0;i<board.length;i++){
 	    for (int j=0;j<board[0].length;j++){
-		if (board[i][j]=='x' || board[i][j] =='$'){
+		if (board[i][j]=='x' || board[i][j] =='@'){
 		    counterEnemy++;
 		}
 		if (board[i][j] == 'o' || board[i][j] == 'K'){
@@ -1820,11 +1637,11 @@ public class driver{
 	    System.out.println(x);
 	    x.computerMove();
 	    x.Gameover();
-	    x.Waitaminute(2000);
+	    x.Waitaminute(1000);
 	    System.out.println("The computer is preparing its move: ");
-	    x.Waitaminute(3500);
+	    x.Waitaminute(1000);
 	    System.out.println(x);
-	    x.Waitaminute(3000);
+	    x.Waitaminute(1000);
 
 	    
 	}
