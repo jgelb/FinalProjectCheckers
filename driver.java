@@ -1798,7 +1798,7 @@ public class driver{
     public static void clrConsole(){System.out.print("\033");}
 
     public static void main(String[] args){
-	board x = new board();
+	driver x = new driver();
 	System.out.println("\nWelcome to Checkers!!");
 	x.Waitaminute(4000);
 	System.out.println("\nFollow the on-screen instructions to play");
