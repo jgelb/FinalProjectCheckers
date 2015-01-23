@@ -240,7 +240,6 @@ public class board{
 	}
 	chooseMoveSpace();
     }
-    
     public void doMove(){
 	//Here will be code for all of the possible move options
 	//Basic moves for regular piece
@@ -706,7 +705,7 @@ public class board{
 		    board[moveRow][moveCol] = 'K';
 		    board[pieceRow][pieceCol] = ' ';
 		    board[moveRow + 1][moveCol - 2] = ' ';
-		}        
+		}
 		if (moveRow >= 2){
 		    if (moveCol == 1){
 			if (board[moveRow-1][moveCol+2] == 'x'){
@@ -917,14 +916,13 @@ public class board{
 		    board[moveRow - 1][moveCol - 2] = ' ';
 		}
 	    }
-	    //Here we will need to insert 2 other else if statements, which deal with kings moving backwards.  It should be the same as what we have currently, just with + instead of - for rows.
+	    //Here we will need to insert 2 other else if statements, which deal with kings moving backwards. It should be the same as what we have currently, just with + instead of - for rows.
 	    else {
 		System.out.println("Illegal Move");
 		choosePieceSpace();
 	    }
 	}
     }
-
     //Computer move functions-------------------------------------------------------------------------------------
     public boolean blockMove(){
 	boolean blocked = false;
@@ -954,7 +952,7 @@ public class board{
 					board [i -1][j - 2] = 'x';
 				    }
 				    else {
-					board [i -1][j - 2] = '$';	
+					board [i -1][j - 2] = '$';
 				    }
 				    board[i-2][j-4] = ' ';
 				    return true;
@@ -965,7 +963,7 @@ public class board{
 					board [i -1][j + 2] = 'x';
 				    }
 				    else {
-					board [i -1][j + 2] = '$';	
+					board [i -1][j + 2] = '$';
 				    }
 				    board[i-2][j] = ' ';
 				    return true;
@@ -1019,8 +1017,7 @@ public class board{
 	}
 	return false;
     }
-
-    //I stopped working on kings here.  We will continue tomorrow.  
+    //I stopped working on kings here. We will continue tomorrow.
     public boolean escape(){ //IF CAN ESCAPE BY KILLING; KILL
 	boolean escaped = false;
 	for (int i=1;i<board.length-2;i++){
@@ -1091,7 +1088,6 @@ public class board{
 	}
 	return false;
     }
-    
     public boolean attack(){
 	boolean attacked = false;
 	for (int i=0;i<board.length;i++){
@@ -1254,7 +1250,6 @@ public class board{
 	}
 	return false;
     }
-    
     public boolean moveEdge(){
 	boolean moved = false;
 	for (int i=0;i<board.length;i++){
@@ -1293,7 +1288,6 @@ public class board{
 	}
 	return false;
     }
-
     public boolean randomMoveNoDanger(){ //DO NOT MOVE INTO DANGER
 	Random r = new Random();
 	boolean moved = false;
@@ -1395,7 +1389,6 @@ public class board{
 			}
 		    }
 		}
-		
 		else if (board[i][j] == '$'){
 		    if (j == 1){
 			if (i == 7){
@@ -1450,7 +1443,7 @@ public class board{
 			}
 		    }
 		    else if (j == 15){
-		        if (i == 7){
+			if (i == 7){
 			    if (board[i-1][j-2] == ' '){
 				if (board[i-2][j-4] != 'o'){
 				    if (board[i-2][j] == 'o'){
@@ -1602,7 +1595,6 @@ public class board{
 	}
 	return false;
     }
-    
     public void randomMove(){
 	Random r = new Random();
 	boolean moved = false;
@@ -1661,7 +1653,7 @@ public class board{
 		    }
 		}
 		else if (board[i][j] == '$'){
-		     if (j == 1){
+		    if (j == 1){
 			if (board[i+1][j+2] == ' '){
 			    if (r.nextInt(2) == 0){
 				moved = true;
@@ -1769,8 +1761,6 @@ public class board{
 	//moveEdge
 	//randomMove
     }
-
-
     public void Gameover(){
 	//tests to see if the game is over
 	int counterEnemy = 0;
@@ -1785,7 +1775,6 @@ public class board{
 		}
 	    }
 	}
-        
 	if (counterOwn<1){
 	    gameOver=1;
 	}
@@ -1793,8 +1782,10 @@ public class board{
 	    gameOver = 2;
 	}
     }
-
-
+    public void Waitaminute(int n){
+	try{ Thread.sleep(n);
+	} catch (Exception e) {}
+    }
     public static void main(String[] args){
 	board x = new board();
 	System.out.println(x);
@@ -1805,10 +1796,16 @@ public class board{
 	    if (x.gameOver == 2){
 		break;
 	    }
+	    System.out.println("Your move: ");
 	    System.out.println(x);
 	    x.computerMove();
 	    x.Gameover();
+	    x.Waitaminute(2000);
+	    System.out.println("The computer is preparing its move: ");
+	    x.Waitaminute(3500);
 	    System.out.println(x);
+
+	    
 	}
 	if (x.gameOver == 1){
 	    System.out.println("You Lose! Run the program again to play again");
