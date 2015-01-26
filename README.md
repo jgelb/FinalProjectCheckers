@@ -10,7 +10,7 @@ This is in the format A6 for example.  The first letter represents the row, and 
 Your row must be a capital letter.  If it is not, you will be prompted for a new move. 
 
 If your piece reaches the other side, it is replaced by a King (K).  Kings can move and capture forwards and backwards.
-An enemy King is represented by a $.
+An enemy King is represented by a @.
 
 If there is a possible double jump, you will be asked if you would like to do the double jump, or stick with a single move. 
 
